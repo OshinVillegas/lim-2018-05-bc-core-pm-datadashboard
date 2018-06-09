@@ -1,0 +1,141 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+header{
+    padding: 0px;
+    background-color: #000000;
+}
+img{
+    width: 140px;
+    height: 40px;
+    margin: 5px 20px;
+}
+hr{
+    margin: 0;
+    padding: 0;
+}
+#general{
+    font-family: "Kavivanar-Regular";
+}
+#menuD{
+    display: inline-block;
+    height: 500px;
+}
+#menuD img{
+    width: 150px;
+    height: 150px;
+    margin: 20px;
+}
+#menuD p{
+    text-align: center;
+}
+#dashB { 
+    display: block;
+    padding: 20px 35px;
+    margin: 0 28px;
+    background: #ffffff;
+    border-width: 0;
+    box-sizing: border-box;
+    transition: all 500ms ease;
+    font-family:"Raleway-Regular";
+}
+#dashB:hover { 
+    background:#999999;
+    color: #ffffff;
+    box-shadow: inset 0 0 0 3px #999999;
+}
+#curso{ 
+    display: block;
+    padding: 20px 42.5px;
+    margin: 0 28px;
+    background: #ffffff;
+    border-width: 0;
+    box-sizing: border-box;
+    transition: all 500ms ease;
+    font-family:"Raleway-Regular";
+}
+#curso:hover { 
+    background:#999999;
+    color: #ffffff;
+    box-shadow: inset 0 0 0 3px #999999;
+}
+#vl{
+    border-left: 3px solid #d9d9d9;
+    position: absolute;
+    display: inline-block;
+    left: 15%;
+    width: 25%;
+    height: 500px;
+    top : 0;
+    margin: 122px 0;
+}
+#contenido{
+    
+    left: 16%;
+    position: absolute;
+    display: inline-block;
+    width: 84%;
+}
+#contenido p{
+    text-align: center;
+}
+#contenido #primeraFila {
+    border-width: 0;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-around;
+}
+#contenido #segundaFila {
+    border-width: 0;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-around;
+}
+#contenido #terceraFila {
+    border-width: 0;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+#contenido #primeraFila #cLima{
+    border-width: 0;
+    width: 40%;
+    font-size: 30px;
+    padding: 20px 0;
+    background: #e6e6e6;
+    font-family:"Raleway-Regular";
+}
+#contenido #primeraFila #cSantiago{
+    border-width: 0;
+    width: 40%;
+    font-size: 30px;
+    padding: 20px 0;
+    background: #e6e6e6;
+    font-family:"Raleway-Regular";
+}
+#contenido #segundaFila #cGuada{
+    border-width: 0;
+    width: 40%;
+    font-size: 30px;
+    padding: 20px 0;
+    background: #e6e6e6;
+    font-family:"Raleway-Regular";
+}
+#contenido #segundaFila #cMexico{
+    border-width: 0;
+    width: 40%;
+    font-size: 30px;
+    padding: 20px 0;
+    background: #e6e6e6;
+    font-family:"Raleway-Regular";
+}
+#contenido #terceraFila button{
+    border-width: 0;
+    padding: 20px 27.5px;
+    font-size: 30px;
+    background: #e6e6e6;
+    font-family:"Raleway-Regular";
+}
+
