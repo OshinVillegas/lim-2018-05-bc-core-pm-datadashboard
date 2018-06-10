@@ -29,44 +29,60 @@
    <div id="vl"></div>
    <section id="contenido">
      <p> < Traning Centers > </p>
-     <div id="primeraFila">
-        <button id="cLima">Lima</button>
-        <button id="cSantiago">Santiago</button>
+     <div id="primeraFila" class="sectionFilas">
+        <button id="cLima" class="centers">Lima</button>
+        <button id="cSantiago" class="centers">Santiago</button>
      </div>
-     <div id="segundaFila">
-        <button id="cGuada">Guadalajara</button>
-        <button id="cMexico">Ciudad de Mexico</button>
+     <div id="segundaFila" class="sectionFilas">
+        <button id="cGuada" class="centers">Guadalajara</button>
+        <button id="cMexico" class="centers">Ciudad de Mexico</button>
      </div>
-     <div id="terceraFila">
-        <button id="cSaoPa">Sao Paolo</button>
+     <div id="terceraFila" class="sectionFilas">
+        <button id="cSaoPa" class="centers">Sao Paolo</button>
      </div>
-
    </section>
- </div>
- <div id="contenidoData" style="display: none">
-   <div id="cantidadT">
-     <div id="totalStudents" class="secciones">
-      <p class="respuestas"></p>
-      <img src="imagenes/icono3.png" alt="">
-      <p>Total Students</p>
-    </div>
-    <div id="totalQuizzes" class="secciones">
-      <p class="respuestas"></p>
-      <img src="imagenes/icono4.png" alt="">
-      <p>Total Quizzes </p>
-    </div>
-    <div id="totalReadings" class="secciones"> 
-      <p class="respuestas"></p>
-      <img src="imagenes/icono5.png" alt="">
-      <p>Total Reading</p>
-    </div>
-    <div id="totalExercises" class="secciones">
-      <p class="respuestas"></p>
-      <img src="imagenes/icono6.png" alt="">
-      <p>Total Excercises</p>
+   <div id="contenidoData" style="display: none">
+      <section id="cantidadT">
+         <div id="totalStudents" class="secciones">
+           <p class="respuestas"></p>
+           <img src="imagenes/icono3.png" alt="">
+           <p>Total Students</p>
+         </div>
+         <div id="totalQuizzes" class="secciones">
+           <p class="respuestas"></p>
+           <img src="imagenes/icono4.png" alt="">
+           <p>Total Quizzes </p>
+         </div>
+         <div id="totalReadings" class="secciones"> 
+           <p class="respuestas"></p>
+           <img src="imagenes/icono5.png" alt="">
+           <p>Total Reading</p>
+         </div>
+         <div id="totalExercises" class="secciones">
+           <p class="respuestas"></p>
+           <img src="imagenes/icono6.png" alt="">
+           <p>Total Excercises</p>
+         </div>
+      </section>
+      <p id="chooseFilter">Filtros por : </p>
+      <section id="filtros">
+        <button id="filtroStudent" class="filaFiltros"> Students </button>
+        <button id="filtroQuizzes" class="filaFiltros"> Quizzes </button>
+        <button id="filtroReadings" class="filaFiltros"> Readings </button>
+        <button id="filtroExercises" class="filaFiltros"> Exercises </button>
+      </section>
+   </div>
+   <div id="contenidoFiltros" style="display: none">
+     <div id="buscador">
+       <p>Buscar: </p> <input type="text" placeholder="Search">
+      </div>
+    
+    <div>
+      <div></div>
+      <p></p>
     </div>
    </div>
  </div>
-  <script src="main.js"></script>s
+  <script src="main.js"></script>
 </body>
 </html>

@@ -17,10 +17,11 @@ hr{
 }
 #general{
     font-family: "Kavivanar-Regular";
+    padding: 0%;
+    margin: 0%;
 }
 #menuD{
     display: inline-block;
-    height: 500px;
 }
 #menuD img{
     width: 150px;
@@ -80,8 +81,7 @@ hr{
     position: absolute;
     display: inline-block;
     left: 15%;
-    width: 25%;
-    height: 500px;
+    height: 450px;
     top : 0;
     margin: 122px 0;
 }
@@ -96,81 +96,38 @@ hr{
     text-align: center;
     font-size: 30px;
 }
-#contenido #primeraFila {
+.sectionFilas {
     border-width: 0;
     padding: 20px 0;
     display: flex;
     justify-content: space-around;
 }
-#contenido #segundaFila {
-    border-width: 0;
-    padding: 20px 0;
-    display: flex;
-    justify-content: space-around;
-}
-#contenido #terceraFila {
-    border-width: 0;
-    padding: 20px 0;
-    display: flex;
-    justify-content: space-around;
-}
-#contenido #primeraFila #cLima{
+.centers{
     border-width: 0;
     width: 40%;
     font-size: 30px;
     padding: 20px 0;
-    background: #e6e6e6;
-    font-family:"Raleway-Regular";
-}
-#contenido #primeraFila #cSantiago{
-    border-width: 0;
-    width: 40%;
-    font-size: 30px;
-    padding: 20px 0;
-    background: #e6e6e6;
-    font-family:"Raleway-Regular";
-}
-#contenido #segundaFila #cGuada{
-    border-width: 0;
-    width: 40%;
-    font-size: 30px;
-    padding: 20px 0;
-    background: #e6e6e6;
-    font-family:"Raleway-Regular";
-}
-#contenido #segundaFila #cMexico{
-    border-width: 0;
-    width: 40%;
-    font-size: 30px;
-    padding: 20px 0;
-    background: #e6e6e6;
-    font-family:"Raleway-Regular";
-}
-#contenido #terceraFila button{
-    border-width: 0;
-    width: 40%;
-    padding: 20px 0;
-    font-size: 30px;
     background: #e6e6e6;
     font-family:"Raleway-Regular";
 }
 #contenidoData{
-
-}
-#cantidadT{
-    background: #cccccc;
-    margin: 20px 0 ;
-    top:65px;
     position: absolute;
+    top:65px;
     left: 16%;
     width: 83%;
+    height: 500px;
+}
+#cantidadT{
+    background:  #d9d9d9;
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0 ;
 }
 .secciones{
     display:inline-block;
     float: left;
-    width: 24.9%;
+    width: 24.5%;
     font-family:"Raleway-Regular";
- 
 }
 .secciones p{
     display: block;
@@ -198,4 +155,44 @@ hr{
 }
 #totalExercises{
 
+}
+#chooseFilter{
+    display: block;
+    margin:350px 0 5px 0;
+    border-width: 0;
+    font-family:"Raleway-Regular";
+    font-size: 15px;
+ }
+#filtros{
+   background-color:  #d9d9d9   ;
+   border-width: 0;
+   display: flex;
+   justify-content: space-around;
+}
+.filaFiltros{
+    border-width: 0;
+    width: 30%;
+    font-size: 20px;
+    padding: 20px 0;
+    font-family:"Raleway-Regular";
+}
+#contenidoFiltros{
+    position: absolute;
+    top:65px;
+    left: 16%;
+    width: 83%;
+    height: 500px;
+}
+#buscador{
+    position: absolute;
+    right: 20px;
+    border-radius: 5px;
+    margin: 5px 0;
+}
+#buscador p{
+    display: inline-block;
+    margin: 0 2px 0 0; 
+}
+#buscador input{
+    border-radius: 5px;
 }
