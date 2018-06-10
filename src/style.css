@@ -32,13 +32,20 @@ hr{
 }
 #dashB { 
     display: block;
-    padding: 20px 35px;
+    padding: 10px 35px;
     margin: 0 28px;
+    text-align: center;
     background: #ffffff;
     border-width: 0;
     box-sizing: border-box;
     transition: all 500ms ease;
     font-family:"Raleway-Regular";
+}
+#dashB img{
+    display: block;
+    width: 35px;
+    height: 35px;
+    margin: 0 15px;
 }
 #dashB:hover { 
     background:#999999;
@@ -47,13 +54,20 @@ hr{
 }
 #curso{ 
     display: block;
-    padding: 20px 42.5px;
+    padding: 10px 36px;
     margin: 0 28px;
+    text-align: center;
     background: #ffffff;
     border-width: 0;
     box-sizing: border-box;
     transition: all 500ms ease;
     font-family:"Raleway-Regular";
+}
+#curso img{
+    display: block;
+    width: 35px;
+    height: 35px;
+    margin: 0 15px;
 }
 #curso:hover { 
     background:#999999;
@@ -61,7 +75,7 @@ hr{
     box-shadow: inset 0 0 0 3px #999999;
 }
 #vl{
-    border-left: 3px solid #d9d9d9;
+    border-left: 1px solid #d9d9d9;
     position: absolute;
     display: inline-block;
     left: 15%;
@@ -71,7 +85,6 @@ hr{
     margin: 122px 0;
 }
 #contenido{
-    
     left: 16%;
     position: absolute;
     display: inline-block;
@@ -79,6 +92,7 @@ hr{
 }
 #contenido p{
     text-align: center;
+    font-size: 30px;
 }
 #contenido #primeraFila {
     border-width: 0;
@@ -98,7 +112,6 @@ hr{
     display: flex;
     justify-content: space-around;
 }
-
 #contenido #primeraFila #cLima{
     border-width: 0;
     width: 40%;
@@ -133,9 +146,35 @@ hr{
 }
 #contenido #terceraFila button{
     border-width: 0;
-    padding: 20px 27.5px;
+    width: 40%;
+    padding: 20px 0;
     font-size: 30px;
     background: #e6e6e6;
     font-family:"Raleway-Regular";
 }
-
+#contenidoData{
+    background: #cccccc;
+    margin: 0 ;
+    top:65px;
+    position: absolute;
+    left: 16%;
+    width: 83%;
+}
+.secciones{
+    display: inline-block;
+    float: left;
+    padding: 15px 7.35%;
+    font-family:"Raleway-Regular";
+}
+#totalStudents{
+    border-right: 1px solid #a6a6a6;
+}
+#totalQuizzes{
+    border-right: 1px solid #a6a6a6;
+}
+#totalReadings{
+    border-right: 1px solid #a6a6a6;
+}
+#totalExercises{
+     
+}
