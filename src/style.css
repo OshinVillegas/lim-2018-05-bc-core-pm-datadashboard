@@ -89,6 +89,7 @@ hr{
     position: absolute;
     display: inline-block;
     width: 84%;
+    top:65px;
 }
 #contenido p{
     text-align: center;
