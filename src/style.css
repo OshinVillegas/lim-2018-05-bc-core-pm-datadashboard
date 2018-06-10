@@ -29,6 +29,7 @@ hr{
 }
 #menuD p{
     text-align: center;
+    font-size: 30px;
 }
 #dashB { 
     display: block;
@@ -154,8 +155,11 @@ hr{
     font-family:"Raleway-Regular";
 }
 #contenidoData{
+
+}
+#cantidadT{
     background: #cccccc;
-    margin: 0 ;
+    margin: 20px 0 ;
     top:65px;
     position: absolute;
     left: 16%;
@@ -164,8 +168,11 @@ hr{
 .secciones{
     display: inline-block;
     float: left;
-    padding: 15px 7.35%;
+    padding: 15px 4.3%;
     font-family:"Raleway-Regular";
+}
+.secciones p{
+    display: inline-block;
 }
 #totalStudents{
     border-right: 1px solid #a6a6a6;
@@ -176,6 +183,28 @@ hr{
 #totalReadings{
     border-right: 1px solid #a6a6a6;
 }
-#totalExercises{
-     
+
+#totalStudents img{
+    display: inline-block;
+    width: 55px;
+    height: 55px;
+    margin: 0 ;
+}
+#totalQuizzes img{
+    display: inline-block;
+    width: 55px;
+    height: 55px;
+    margin: 0 ;
+}
+#totalReadings img{
+    display: inline-block;
+    width: 55px;
+    height: 55px;
+    margin: 0;
+}
+#totalExercises img{
+    display: inline-block;
+    width: 55px;
+    height: 55px;
+    margin: 0 ;
 }
