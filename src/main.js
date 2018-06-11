@@ -28,17 +28,17 @@ btndashB.addEventListener("click",()=>{
 
 btnfiltroStudent.addEventListener('click',()=>{
    
-    let request = new XMLHttpRequest(); 
-    request.open('GET', '../data/cohorts/lim-2018-03-pre-core-pw/users.json', true);
+    let request1 = new XMLHttpRequest(); 
+    request1.open('GET', '../data/cohorts/lim-2018-03-pre-core-pw/users.json', true);
 
-    request.onload = function () {
-      if(request.status === 200){
-       let users = JSON.parse(request.response);
+    request1.onload = function () {
+      if(request1.status === 200){
+       let users = JSON.parse(request1.response);
        console.log(users);
        cargandodata(users);
       } 
     }
-    request.send();
+    request1.send();
 document.getElementById('contenidoData').style.display="none";
 document.getElementById('contenidoFiltros').style.display="block";
 });
