@@ -7,18 +7,24 @@ function cargandodata(jsonObj){
     console.log(jsonObj);
     jsonObj.forEach((elemento) => {
      
-      let linew= document.createElement("li");
-     // let contenido = document.createTextNode();
-      dataStudents.appendChild(linew);
-     // linew.appendChild(contenido);
-
-      let btnNomb=document.createElement("button");
-      btnNomb.type= 'button';
-      btnNomb.textContent = elemento["name"];
-      linew.appendChild(btnNomb);
-
+     //se crea una lista de nombres
+    let linewUp= document.createElement("ul");
+    //se le asigna una clase a la etiqueta ul
+    linewUp.className = "listEstudiantes";
+    let linew= document.createElement("li");
+    dataStudents.appendChild(linewUp);
+    //se le asigna una clase a la etiqueta li
+    linew.className = "listasEstudiantes";
+     
+     linewUp.appendChild(linew);
+      let rutaDataNombres=document.createElement("a");
+      rutaDataNombres.textContent = elemento["name"];
+      rutaDataNombres.href="about:blank";
+    //se le asigna una clase a la etiqueta a
+    rutaDataNombres.className ="rutasNombres";
+    linew.appendChild(rutaDataNombres);
     });
-
+    
 }
 
 btnLima.addEventListener("click",()=>{

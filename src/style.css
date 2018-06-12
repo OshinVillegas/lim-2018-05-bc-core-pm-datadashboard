@@ -197,8 +197,25 @@ hr{
     border-radius: 5px;
 }
 #listStudents{
-    
-    border-radius: 5px;
-    margin: 35px 15px 0 0 ;
-    background-color: aqua;
+    margin: 50px 0; 
+}
+/*Etiqueta ul*/
+.listEstudiantes{
+    list-style: none;
+    padding: 2px 5px;
+    margin: 0;
+}
+/*Etiqueta li*/
+.listasEstudiantes{
+    list-style: none;
+    margin: 0px;
+    padding: 10px 5px;
+    border: 2px solid #e6e6e6;
+}
+/*Etiqueta a*/
+.rutasNombres{
+    text-decoration: none;
+    font-size: 20px;
+    font-family:"Raleway-Regular";
+    color: #000000;
 }
