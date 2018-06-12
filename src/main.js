@@ -5,14 +5,21 @@ const dataStudents= document.getElementById("listStudents");
 
 function cargandodata(jsonObj){
     console.log(jsonObj);
- 
-    var linew= document.createElement("li");
-    var contenido = document.createTextNode(jsonObj[0]["name"]);
-    dataStudents.appendChild(linew);
-    linew.appendChild(contenido);
+    jsonObj.forEach((elemento) => {
+     
+      let linew= document.createElement("li");
+     // let contenido = document.createTextNode();
+      dataStudents.appendChild(linew);
+     // linew.appendChild(contenido);
+
+      let btnNomb=document.createElement("button");
+      btnNomb.type= 'button';
+      btnNomb.textContent = elemento["name"];
+      linew.appendChild(btnNomb);
+
+    });
+
 }
-
-
 
 btnLima.addEventListener("click",()=>{
         document.getElementById('contenido').style.display="none";
@@ -24,7 +31,6 @@ btndashB.addEventListener("click",()=>{
     document.getElementById('contenido').style.display="block";
    
 })
-
 
 btnfiltroStudent.addEventListener('click',()=>{
    
