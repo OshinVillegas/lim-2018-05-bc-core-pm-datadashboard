@@ -1,26 +1,28 @@
 const btnLima = document.getElementById("cLima");
 const btndashB = document.getElementById("dashB");
 const btnfiltroStudent = document.getElementById("filtroStudent");
+const btnfiltroQuizzes = document.getElementById("filtroQuizzes")
 const dataStudents= document.getElementById("listStudents");
+const dataQuizzes = document.getElementById("listQuizzes");
 
 function cargandodata(jsonObj){
     console.log(jsonObj);
     jsonObj.forEach((elemento) => {
-     
-      let linew= document.createElement("li");
-     // let contenido = document.createTextNode();
-      dataStudents.appendChild(linew);
-     // linew.appendChild(contenido);
 
-      let btnNomb=document.createElement("button");
-      btnNomb.type= 'button';
-      btnNomb.textContent = elemento["name"];
-      linew.appendChild(btnNomb);
+        //se crea una lista de nombres
+        let linewUp = document.createElement("ul");
+        let linew = document.createElement("li");
+        dataStudents.appendChild(linewUp);
+        linew.className = "listasEstudiantes";
 
-    });
+        linewUp.appendChild(linew);
+        let rutaDataNombres = document.createElement("a");
+        rutaDataNombres.textContent = elemento["name"];
+        rutaDataNombres.href = "about:blank";
+        linew.appendChild(rutaDataNombres);
 
-}
-
+    }
+    )}
 btnLima.addEventListener("click",()=>{
         document.getElementById('contenido').style.display="none";
         document.getElementById('contenidoData').style.display="block";
@@ -47,4 +49,26 @@ btnfiltroStudent.addEventListener('click',()=>{
     request.send();
 document.getElementById('contenidoData').style.display="none";
 document.getElementById('contenidoFiltros').style.display="block";
-});
+})
+
+
+btnfiltroQuizzes.addEventListener('click',()=>{
+
+    let request3 = new XMLHttpRequest();
+    request3.open('GET', '../data/cohorts/lim-2018-03-pre-core-pw/progress.json', true);
+    
+    request3.onload = function () {
+        if (request3.status == 200) {
+            let progress = JSON.parse(request3.responseText);
+            console.log(progress);
+        }
+    };
+
+    request3.send();
+    
+    
+    document.getElementById('contenidoData').style.display = "none";
+    document.getElementById('contenidoFiltros').style.display = "block";
+})
+
+
