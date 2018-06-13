@@ -21,8 +21,26 @@ function cargandodata(jsonObj){
         rutaDataNombres.href = "about:blank";
         linew.appendChild(rutaDataNombres);
 
-    }
-    )}
+    })
+}
+function cargandodataQ(jsonObj) {
+    console.log(jsonObj);
+    jsonObj.forEach((elemento) => {
+
+        //se crea una lista de nombres
+        let linewUp = document.createElement("ul");
+        let linew = document.createElement("li");
+        dataQuizzes.appendChild(linewUp);
+        linew.className = "listasEstudiantes";
+
+        linewUp.appendChild(linew);
+        let rutaDataNombres = document.createElement("a");
+        rutaDataNombres.textContent = elemento["name"];
+        rutaDataNombres.href = "about:blank";
+        linew.appendChild(rutaDataNombres);
+
+    })
+}
 btnLima.addEventListener("click",()=>{
         document.getElementById('contenido').style.display="none";
         document.getElementById('contenidoData').style.display="block";
@@ -59,8 +77,12 @@ btnfiltroQuizzes.addEventListener('click',()=>{
     
     request3.onload = function () {
         if (request3.status == 200) {
-            let progress = JSON.parse(request3.responseText);
-            console.log(progress);
+            let progress = JSON.parse(request3.responseText)
+
+            //let array1 = progress["04oXrfTxNUbhGtkxNTfw7fhHVgs1"].intro;
+            //console.log(array1)
+            let array1 = Object.keys(progress)
+            console.log(array1)
         }
     };
 
