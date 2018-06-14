@@ -6,30 +6,18 @@ const dataStudents= document.getElementById("listStudents");
 const dataQuizzes = document.getElementById("listQuizzes");
 const cohortsSelect = document.getElementById("trainingCenters");
 
+//funciones para tomar datos del Cohort.json
 function cargarDatosCohorts(){
     let request = new XMLHttpRequest(); 
     request.open('GET', '../data/cohorts.json', true);
     request.onload = function () {
       if(request.status === 200){
-       let sedes = JSON.parse(request.response);
-       cargarDatosSelect(sedes);
-
-      }
+       let array = JSON.parse(request.response);
+       cargarDatosSelect(array);
+        }
     }
-      request.send();
+    request.send();
 }
-btnLima.addEventListener("click",()=>{
-        // document.getElementById('contenidoData').style.display="block";
-        cargarDatosCohorts(event);
-
-        document.getElementById('contenido').style.display="none";
-        document.getElementById('selectCenters').style.display="block";
-})
- cohortsSelect.addEventListener("change",()=>{
-    document.getElementById('selectCenters').style.display="none";
-            document.getElementById('contenidoData').style.display="block";
-
-  }); 
 function cargarDatosSelect(array) {
     array.sort();
     array.forEach((elemento) => {
@@ -38,108 +26,82 @@ function cargarDatosSelect(array) {
         }
     }); 
 }
-function cargarSelect(array) {
-    array.forEach((elemento) => {
-        if(elemento["id"] === "lim-2018-03-pre-core-pw"){
-            document.getElementById('selectCenters').style.display="none";
-            document.getElementById('contenidoData').style.display="block";
-        }
-        }); 
-}
+//funcion para tomar datos del user.json
+function cargandodataStudents(jsonObj){
 
+    console.log(jsonObj);
+    jsonObj.forEach((elemento) => {
+     
+     //se crea una lista de nombres
+    let linewUp= document.createElement("ul");
+    //se le asigna una clase a la etiqueta ul
+    linewUp.className = "listEstudiantes";
+    let linew= document.createElement("li");
+    dataStudents.appendChild(linewUp);
+    //se le asigna una clase a la etiqueta li
+    linew.className = "listasEstudiantes";
+     
+     linewUp.appendChild(linew);
+      let rutaDataNombres=document.createElement("a");
+      rutaDataNombres.textContent = elemento["name"];
+      rutaDataNombres.href="about:blank";
+    //se le asigna una clase a la etiqueta a
+    rutaDataNombres.className ="rutasNombres";
+    linew.appendChild(rutaDataNombres);
+    });
+    
+}
+// Eventos del dom
+btnLima.addEventListener("click",(e)=>{
+    console.log(e.target.textContent);
+    // document.getElementById('contenidoData').style.display="block";
+    cargarDatosCohorts();
+    document.getElementById('contenido').style.display="none";
+    document.getElementById('selectCenters').style.display="block";
+})
+cohortsSelect.addEventListener("change",(e)=>{
+ if(e.target.value === "lim-2018-03-pre-core-pw") {
+    document.getElementById('selectCenters').style.display="none";
+    document.getElementById('contenidoData').style.display="block";
+ }
+}); 
 btndashB.addEventListener("click",()=>{
     document.getElementById('contenidoData').style.display="none";
     document.getElementById('selectCenters').style.display="none";
+    document.getElementById('contenidoFiltros').style.display="none";
     document.getElementById('contenido').style.display="block";
    
 })
-// btnfiltroStudent.addEventListener('click',()=>{
+btnfiltroStudent.addEventListener('click',()=>{
    
-//     let request = new XMLHttpRequest(); 
-//     request.open('GET', '../data/cohorts/lim-2018-03-pre-core-pw/users.json', true);
-//     request.onload = function () {
-//       if(request.status === 200){
-//        let users = JSON.parse(request.response);
-//        console.log(users);
-//        cargandodata(users);
+    let request = new XMLHttpRequest(); 
+    request.open('GET', '../data/cohorts/lim-2018-03-pre-core-pw/users.json', true);
+    request.onload = function () {
+      if(request.status === 200){
+       let users = JSON.parse(request.response);
+       console.log(users);
+       cargandodataStudents(users);
+      } 
+    }
+    request.send();
+document.getElementById('contenidoData').style.display="none";
+document.getElementById('contenidoFiltros').style.display="block";
+});
+// btnfiltroQuizzes.addEventListener('click',()=>{
+//     let request1 = new XMLHttpRequest(); 
+//     request1.open('GET', '../data/cohorts/lim-2018-03-pre-core-pw/progress.json', true);
+//     request1.onload = function () {
+//       if(request1.status === 200){
+//        let progress = JSON.parse(request1.response);
+//        //console.log(progress);       console.log(objeto1);
+//        let arry1=Object.keys(progress);
+//        //console.log(arry1);
+ 
+//         cargandodataQuizzes(arry1);
 //       } 
 //     }
-//     request.send();
+//     request1.send();
 // document.getElementById('contenidoData').style.display="none";
-// document.getElementById('contenidoFiltros').style.display="block";
-// });
-// // btnfiltroQuizzes.addEventListener('click',()=>{
-// //     let request1 = new XMLHttpRequest(); 
-// //     request1.open('GET', '../data/cohorts/lim-2018-03-pre-core-pw/progress.json', true);
-// //     request1.onload = function () {
-// //       if(request1.status === 200){
-// //        let progress = JSON.parse(request1.response);
-// //        //console.log(progress);       console.log(objeto1);
-// //        let arry1=Object.keys(progress);
-// //        //console.log(arry1);
- 
-// //         cargandodataQuizzes(arry1);
-// //       } 
-// //     }
-// //     request1.send();
-// // document.getElementById('contenidoData').style.display="none";
-// // document.getElementById('contenidoFiltros').style.display="block";    
-// // })
-// // //Secciones de Funciones
+// document.getElementById('contenidoFiltros').style.display="block";    
+// })
 
-// function cargandodata(jsonObj){
-
-//     console.log(jsonObj);
-//     jsonObj.forEach((elemento) => {
-     
-//      //se crea una lista de nombres
-//     let linewUp= document.createElement("ul");
-//     //se le asigna una clase a la etiqueta ul
-//     linewUp.className = "listEstudiantes";
-//     let linew= document.createElement("li");
-//     dataStudents.appendChild(linewUp);
-//     //se le asigna una clase a la etiqueta li
-//     linew.className = "listasEstudiantes";
-     
-//      linewUp.appendChild(linew);
-//       let rutaDataNombres=document.createElement("a");
-//       rutaDataNombres.textContent = elemento["name"];
-//       rutaDataNombres.href="about:blank";
-//     //se le asigna una clase a la etiqueta a
-//     rutaDataNombres.className ="rutasNombres";
-//     linew.appendChild(rutaDataNombres);
-//     });
-    
-// }
-// // // function cargandodataQuizzes(jsonObj1){
-  
-// // //     console.log(jsonObj1);
-// // //     for(var i = 0; i < jsonObj1.length; i++){
-// // //         let objetito=jsonObj1[]
-// // //         console.log(jsonObj1[i]);
-// // //     }
-// // //    /* for(let i= 0;i<jsonObj1.l)
-// // //     console.log(jsonObj1[2]); */
-    
-// // //     // jsonObj1.forEach((elemento) => {
-        
-// // //     //     //se crea una lista de nombres
-// // //     // let linewUp= document.createElement("ul");
-// // //     // //se le asigna una clase a la etiqueta ul
-// // //     // linewUp.className = "listEstudiantes";
-// // //     // let linew= document.createElement("li");
-// // //     // dataQuizzes.appendChild(linewUp);
-// // //     // //se le asigna una clase a la etiqueta li
-// // //     // linew.className = "listasEstudiantes";
-        
-// // //     //     linewUp.appendChild(linew);
-// // //     //     let rutaDataNombres=document.createElement("a");
-// // //     //     rutaDataNombres.textContent = elemento;
-// // //     //     rutaDataNombres.href="about:blank";
-// // //     // //se le asigna una clase a la etiqueta a
-// // //     // rutaDataNombres.className ="rutasNombres";
-// // //     // linew.appendChild(rutaDataNombres);
-// // //     // });
-
-
-// // // }
