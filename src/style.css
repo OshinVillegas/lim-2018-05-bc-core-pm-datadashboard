@@ -110,6 +110,28 @@ hr{
     background: #e6e6e6;
     font-family:"Raleway-Regular";
 }
+#selectCenters{
+    position: absolute;
+    top:105px;
+    left: 16%;
+    width: 83%;
+    height: 500px;
+}
+#selectCenters p {
+    position: absolute;
+    left: 16%;
+    width: 83%;
+    height: 500px;
+    font-family:"Raleway-Regular";
+    font-size: 30px;
+}
+#selectCenters select{
+    position: absolute;
+    top:95px;
+    left: 16%;
+    font-size: 20px;
+    font-family:"Raleway-Regular";
+}
 #contenidoData{
     position: absolute;
     top:65px;
