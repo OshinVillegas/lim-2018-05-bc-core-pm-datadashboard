@@ -5,6 +5,7 @@ const btnfiltroQuizzes = document.getElementById("filtroQuizzes");
 const dataStudents= document.getElementById("listStudents");
 const dataQuizzes = document.getElementById("listQuizzes");
 const cohortsSelect = document.getElementById("trainingCenters");
+const resp1 = document.getElementById("respuestas1");
 
 //funciones para tomar datos del Cohort.json
 function cargarDatosCohorts(){
@@ -14,6 +15,17 @@ function cargarDatosCohorts(){
       if(request.status === 200){
        let array = JSON.parse(request.response);
        cargarDatosSelect(array);
+        }
+    }
+    request.send();
+}
+function cargarDatosProgress(){
+    let request = new XMLHttpRequest(); 
+    request.open('GET', '../data/cohorts/lim-2018-03-pre-core-pw/progress.json', true);
+    request.onload = function () {
+      if(request.status === 200){
+       let progressQuizzes = JSON.parse(request.response);
+       cargandodataQuizzes(progressQuizzes);
         }
     }
     request.send();
@@ -29,7 +41,7 @@ function cargarDatosSelect(array) {
 //funcion para tomar datos del user.json
 function cargandodataStudents(jsonObj){
 
-    console.log(jsonObj);
+    // console.log(jsonObj);
     jsonObj.forEach((elemento) => {
      
      //se crea una lista de nombres
@@ -51,9 +63,23 @@ function cargandodataStudents(jsonObj){
     });
     
 }
+function cargandodataQuizzes(jsonObj){
+    let progress= Object.keys(jsonObj);
+
+    // console.log(jsonObj);
+    for (let i = 0; i < progress.length; i++) {
+        const element = progress[0];
+        // const propiedadElemento = jsonObj[element].intro;
+        // const porpiedadDura=jsonObj[element].intro.totalDuration;
+        const porpiedadDura=jsonObj[element].intro.units;
+        console.log(porpiedadDura);
+                
+    }
+    
+}
 // Eventos del dom
-btnLima.addEventListener("click",(e)=>{
-    console.log(e.target.textContent);
+btnLima.addEventListener("click",()=>{
+    // console.log(e.target.textContent);
     // document.getElementById('contenidoData').style.display="block";
     cargarDatosCohorts();
     document.getElementById('contenido').style.display="none";
@@ -63,7 +89,10 @@ cohortsSelect.addEventListener("change",(e)=>{
  if(e.target.value === "lim-2018-03-pre-core-pw") {
     document.getElementById('selectCenters').style.display="none";
     document.getElementById('contenidoData').style.display="block";
+    cargarDatosProgress();
+
  }
+
 }); 
 btndashB.addEventListener("click",()=>{
     document.getElementById('contenidoData').style.display="none";
