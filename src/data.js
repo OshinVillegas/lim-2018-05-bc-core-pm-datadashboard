@@ -1,19 +1,37 @@
-window.computeUsersStats = (users, progress, courses) => {
-    users=[
-        
+const computeUsersStats = (users, progress, courses) => {
+    usersWithStats=[
+        stats={
+            percent:
+            exercises={
+                total:sdsd,
+                completed:d,
+                percent:d
+            },
+            reads={
+                total:sdsd,
+                completed:d,
+                percent:d
+            },
+            quizzes={
+                total:sdsd,
+                completed:d,
+                percent:d,
+                scoreSum:a,
+                scoreAvg:a
+            }
+        }
     ]
-    return users;
+    return usersWithStats;
     
 };
-
-window.sortUsers = (users, orderBy, orderDirection) => {
+const sortUsers = (users, orderBy, orderDirection) => {
 
 };
 
-window.filterUsers = (users, search) => {
+const filterUsers = (users, search) => {
 };
 
-window.processCohortData = (options) => {
+const processCohortData = (options) => {
 
 };
 

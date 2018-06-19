@@ -1,3 +1,4 @@
+// Dclaracion de las variables
 const btnLima = document.getElementById("cLima");
 const btndashB = document.getElementById("dashB");
 const btnfiltro = document.getElementById("filtroPor");
@@ -6,31 +7,31 @@ const cohortsSelect = document.getElementById("trainingCenters");
 const resp1 = document.getElementById("respuestas1");
 
 //funciones para tomar datos del Cohort.json
-function cargarDatosCohorts(){
+getDataCohorts = () => {
     let request = new XMLHttpRequest(); 
     request.open('GET', '../data/cohorts.json', true);
     request.onload = function () {
       if(request.status === 200){
        let array = JSON.parse(request.response);
-       cargarDatosSelect(array);
+       showDataSelect(array);
         }
     }
     request.send();
 }
-function cargarDatosStudents(){
+//funcion para tomar datos del user.json
+getDataStudents = ()=>{
     let request = new XMLHttpRequest(); 
     request.open('GET', '../data/cohorts/lim-2018-03-pre-core-pw/users.json', true);
     request.onload = function () {
       if(request.status === 200){
        let users = JSON.parse(request.response);
        console.log(users);
-       cargandodataStudents(users);
+       showdataStudents(users);
       } 
     }
     request.send();
 }
-
-function cargarDatosSelect(array) {
+showDataSelect = (array)=>{
     array.sort();
     array.forEach((elemento) => {
         if(elemento["id"].substring(0,3)=== "lim"){
@@ -38,8 +39,8 @@ function cargarDatosSelect(array) {
         }
     }); 
 }
-//funcion para tomar datos del user.json
-function cargandodataStudents(jsonObj){
+// Funcion para mostrar datos del user.json
+showdataStudents = (jsonObj)=>{
     // console.log(jsonObj);
     jsonObj.forEach((elemento) => {
     
@@ -66,7 +67,7 @@ function cargandodataStudents(jsonObj){
 btnLima.addEventListener("click",()=>{
     // console.log(e.target.textContent);
     // document.getElementById('contenidoData').style.display="block";
-    cargarDatosCohorts();
+    getDataCohorts();
     document.getElementById('contenido').style.display="none";
     document.getElementById('selectCenters').style.display="block";
 })
@@ -75,7 +76,7 @@ cohortsSelect.addEventListener("change",(e)=>{
     document.getElementById('selectCenters').style.display="none";
     document.getElementById('contenidoData').style.display="block";
     // cargarDatosProgress();
-
+    
  }
 
 }); 
@@ -89,7 +90,7 @@ btndashB.addEventListener("click",()=>{
 btnfiltro.addEventListener('change',(e)=>{
 
     if(e.target.value === "students"){
-        cargarDatosStudents();   
+        getDataStudents();   
         document.getElementById('contenidoData').style.display="none";
         document.getElementById('contenidoFiltros').style.display="block";
     }
