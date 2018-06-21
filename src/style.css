@@ -145,14 +145,13 @@ hr{
 }
 #graphicsTotal{
     background:  #d9d9d9;
-    display: flex;
-    justify-content: space-around;
     margin: 20px 0 ;
-}
+    width:100%;
 
+}
 #chooseFilter{
     display: block;
-    margin:350px 0 5px 0;
+    margin:10px 0 5px 0;
     border-width: 0;
     font-family:"Raleway-Regular";
     font-size: 15px;
@@ -160,7 +159,6 @@ hr{
 #filtros{
    background-color:  #d9d9d9   ;
    border-width: 0;
-   display: flex;
    justify-content: space-around;
 }
 #filtros select{
@@ -226,16 +224,21 @@ hr{
 Css orignal https://codepen.io/jlalovi/details/bIyAr
 ************************/
 
-ul {
-	list-style-type: none;
-	margin: 0;
-	padding-left: 0;
-}
-
 h2 {
 	font-size: 17px;
 }
+#contenidoGrafico{
+    display: inline-block;
+    border: 2px solid #e64c65;
+    width: 70%;
 
+}
+#contenidoEstadistico{
+    display: inline-block;
+    border: 2px solid #e64c65;
+    width: 20%;
+
+}
 p {
 	font-size: 15px;
 }
@@ -253,38 +256,41 @@ text-align: center;
 border-top-left-radius: 5px;
 border-top-right-radius: 5px;
 }
-.horizontal-list {
-	margin: 0;
-	padding: 0;
-	list-style-type: none;
+
+
+.block {
+    margin: 25px 25px 0 0;
+    background: #394264;
+    border-radius: 5px;
+
 }
-.horizontal-list li {
-    float: left;
-}
-    .block {
-        margin: 25px 25px 0 0;
-        background: #394264;
-        border-radius: 5px;
-    float: left;
-    width: 300px;
-    overflow: hidden;
-    }
 		/******************************************** LEFT CONTAINER *****************************************/
-.menu-box {
-    height: 360px;
-}
+
 
 .donut-chart-block {
-    overflow: hidden;
 }
 .donut-chart-block .titular {
 padding: 10px 0;
 }
-.os-percentages li {
-width: 75px;
+.os-percentages{
+
+    border-left: 1px solid #394264;
+    text-align: center;					
+    background: #50597b;
+    margin: 0;
+	padding-left: 0;
+    }
+    .os-percentages img{
+        width: 50px;
+        height: 50px;
+        }
+.os-percentages div {
+
 border-left: 1px solid #394264;
 text-align: center;					
 background: #50597b;
+margin: 0;
+padding: 0;
 }
 .os {
 margin: 0;

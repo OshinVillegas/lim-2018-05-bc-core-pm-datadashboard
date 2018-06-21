@@ -4,7 +4,6 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="fuentes/font.css" />
   <title>Data Dashboard</title>
@@ -53,18 +52,8 @@
       <section id="graphicsTotal">
         <div class="donut-chart-block block"> 
           <h2 class="titular">OS AUDIENCE STATS</h2>
-          <div class="donut-chart">
-          <!-- PORCIONES GRAFICO CIRCULAR
-          ELIMINADO #donut-chart
-          MODIFICADO CSS de .donut-chart -->
-            <div id="porcion1" class="recorte"><div class="quesito ios" data-rel="21"></div></div>
-            <div id="porcion2" class="recorte"><div class="quesito mac" data-rel="39"></div></div>
-            <div id="porcion3" class="recorte"><div class="quesito win" data-rel="31"></div></div>
-            <div id="porcionFin" class="recorte"><div class="quesito linux" data-rel="9"></div></div>
-            <!-- FIN AÑADIDO GRÄFICO -->
-            <p class="center-date">JUNE<br><span class="scnd-font-color">2013</span></p>        
-          </div>
-          <div class="os-percentages horizontal-list">
+          <div id="contenidoEstadistico">
+            <div class="os-percentages">
               <div>
                   <img src="imagenes/icono3.png" alt="">
                   <p class="ios os scnd-font-color">Total Students</p>
@@ -86,6 +75,21 @@
                   <p class="os-percentage">31<sup>%</sup></p>
               </div>
             </div>
+          
+          </div>
+          <div id="contenidoGrafico">
+            <div class="donut-chart">
+              <!-- PORCIONES GRAFICO CIRCULAR
+              ELIMINADO #donut-chart
+              MODIFICADO CSS de .donut-chart -->
+                <div id="porcion1" class="recorte"><div class="quesito ios" data-rel="21"></div></div>
+                <div id="porcion2" class="recorte"><div class="quesito mac" data-rel="39"></div></div>
+                <div id="porcion3" class="recorte"><div class="quesito win" data-rel="31"></div></div>
+                <div id="porcionFin" class="recorte"><div class="quesito linux" data-rel="9"></div></div>
+                <!-- FIN AÑADIDO GRÄFICO -->
+                <p class="center-date">JUNE<br><span class="scnd-font-color">2013</span></p>        
+              </div>
+          </div>
         </div>
       </section>
       
@@ -101,14 +105,13 @@
       </section>
    </div>
    <div id="contenidoFiltros" style="display: none">
-     <div id="buscador">
+      <div id="buscador">
        <p>Buscar: </p> <input type="text" placeholder="Search">
       </div>
       <div id = "listStudents"></div>
       <div id = "listQuizzes"></div>
-    <div>
-      <div></div>
-      <p></p>
+    <div id="estatus">
+
     </div>
    </div>
  </div>
