@@ -2,10 +2,9 @@
 const btnLima = document.getElementById("cLima");
 const btndashB = document.getElementById("dashB");
 const btnfiltro = document.getElementById("filtroPor");
-const dataStudents= document.getElementById("listStudents");
+const dataStudents= document.getElementById("tablaUsers");
 const cohortsSelect = document.getElementById("trainingCenters");
 const resp1 = document.getElementById("respuestas1");
-const showStatus= document.getElementById("status");
 
 
 // // Eventos del dom
@@ -55,91 +54,67 @@ btnfiltro.addEventListener('change',(e)=>{
         return response.json();
         })
         .then (function (dataUsers) {
-            dataUsers.forEach((elemento) => {
-        
-            //se crea una lista de nombres
-            let linewUp= document.createElement("ul");
-            //se le asigna una clase a la etiqueta ul
-            linewUp.className = "listEstudiantes";
-            let linew= document.createElement("li");
-            dataStudents.appendChild(linewUp);
-            //se le asigna una clase a la etiqueta li
-            linew.className = "listasEstudiantes";
+            let celda = '';
+            celda += '<tr>';
+            celda += '<th> ID </th>';
+            celda += '<th> SINGUPCOHORT </th>';
+            celda += '<th> NAME </th>';
+            celda += '<th> ROLE </th>';
+            celda += '</tr>'
             
-            linewUp.appendChild(linew);
-            let rutaDataNombres=document.createElement("a");
-            rutaDataNombres.textContent = elemento["name"];
-            //se le asigna una clase a la etiqueta a
-            rutaDataNombres.className ="rutasNombres";
-            rutaDataNombres.id ="rutasName";
-            linew.appendChild(rutaDataNombres);
-            })
-            document.getElementById("rutasName").addEventListener("click",(e)=>{
-                e.preventDefault();
-                document.getElementById('contenidoFiltros').style.display="none";
-                document.getElementById('estatus').style.display="block";
-                fetch('../data/cohorts/lim-2018-03-pre-core-pw/users.json')
-            .then((response) => {
-                return response.json();
-            })
-            .then((myUser) => {
-                let caracter = '';
-                caracter += '<tr>';
-                caracter += '<th> Nombres </th>';
-                caracter += '<th> General % </th>';
-                caracter += '<th> Ejercicios % </th>';
-                caracter += '<th> Quiz % </th>';
-                caracter += '<th> Lecturas % </th>';
-                caracter += '</tr>'
-                fetch('../data/cohorts/lim-2018-03-pre-core-pw/progress.json')
-                .then((response) => {
-                    return response.json();
-                })
-                .then((myProgress) => {
-                    let progresoIds = Object.entries(myProgress);
-                    for (i = 0; i < myUser.length; i++) {
-                    caracter += '<tr>';
-                    caracter += '<td id= "nombrestabla">' + myUser[i].name + '</td>';
-                    if(myProgress.hasOwnProperty(myUser[i].id)) {
-                        const progressUser = myProgress[myUser[i].id];
-                        if(progressUser.hasOwnProperty('intro')){
-                        const intro = progressUser.intro;
-                        const unitIntroduction = intro.units['01-introduction'];
-                        const unitVariables = intro.units['02-variables-and-data-types'];
-                        const unitUx = intro.units['03-ux-design'];
-                        const resultadoExecises = unitVariables.parts['06-exercises'].completed ;
-                        const resultadoQuiz = unitIntroduction.parts['04-quiz'].completed + unitVariables.parts['05-quiz'].completed + unitUx.parts['03-quiz'].completed;
-                        const resultadoLecturas = unitIntroduction.parts['00-welcome-and-orientation'].completed + unitIntroduction.parts['01-growth-mindset'].completed +unitIntroduction.parts['02-why-learn-to-code'].completed + unitIntroduction.parts['03-your-first-website'].completed + unitVariables.parts['00-values-data-types-and-operators'].completed + unitVariables.parts['01-variables'].completed + unitVariables.parts['02-self-learning-MDN'].completed + unitVariables.parts['03-comments'].completed + unitUx.parts['00-development-team'].completed + unitUx.parts['01-ux-design'].completed + unitUx.parts['02-ux-design-vs-ui-design'].completed;
-                        if (intro.hasOwnProperty('percent')) {
-                            caracter += '<td>' + intro.percent + '</td>';
-                            caracter += '<td>'+ resultadoExecises*100 +'</td>';
-                            caracter += '<td>' + parseInt(resultadoQuiz * 100 / 3) + '</td>';
-                            caracter += '<td>' + parseInt(resultadoLecturas * 100 / 11) + '</td>';
-                            caracter += '</tr>';
-                        }
-                        } else {
-                        caracter += '<td>No inicio</td>';
-                        caracter += '<td>No inicio</td>';
-                        caracter += '<td>No inicio</td>';
-                        caracter += '<td>No inicio</td>';
-                        caracter += '</tr>';
-                        }
-                        showStatus.innerHTML = caracter;
-                    }
-                    
-                    }
-                    
-                })
-            })
+            for (i = 0; i < dataUsers.length; i++) {
+                if(dataUsers[i].signupCohort==="lim-2018-03-pre-core-pw"){
+                celda += '<tr>';
+                celda += '<td id= "nombrestabla"><a href="" >' +  dataUsers[i].id + '</a></td>';
+                
+                celda += '<td>' + dataUsers[i].name + '</td>';
+                celda += '<td>'+ dataUsers[i].signupCohort +'</td>';
+                celda += '<td>' + dataUsers[i].role + '</td>';
+                celda += '</tr>';
+                }
+                
+            }
+            dataStudents.innerHTML = celda;
+                
 
-                    })
-                })
-        .catch(error => console.error('Error:', error));
+        })
+
         document.getElementById('contenidoData').style.display="none";
         document.getElementById('contenidoFiltros').style.display="block";
     }
 });
-
+        // //se crea una lista de nombres
+            // let linewUp= document.createElement("ul");
+            // //se le asigna una clase a la etiqueta ul
+            // linewUp.className = "listEstudiantes";
+            // let linew= document.createElement("li");
+            // dataStudents.appendChild(linewUp);
+            // //se le asigna una clase a la etiqueta li
+            // linew.className = "listasEstudiantes";
+            
+            // linewUp.appendChild(linew);
+            // let rutaDataNombres=document.createElement("a");
+            // rutaDataNombres.textContent = elemento["name"];
+            // //se le asigna una clase a la etiqueta a
+            // rutaDataNombres.className ="rutasNombres";
+            // rutaDataNombres.id ="rutasName";
+            // linew.appendChild(rutaDataNombres);
+            // console.log(document.getElementById("rutasName")[0]);
+            // })       
+            // document.getElementById("rutasName").addEventListener("click",(e)=>{
+            //     e.preventDefault();
+                
+            //     document.getElementById('contenidoFiltros').style.display="none";
+            //     document.getElementById('estatus').style.display="block";
+            //     fetch('../data/cohorts/lim-2018-03-pre-core-pw/users.json')
+            //     .then((response) => {
+            //         return response.json();
+            //     })
+            //     .then((myUser) => {
+                   
+            //     })
+                
+            // })
 
 // function cargandodataQuizzes(jsonObj){
     //     let progress= Object.keys(jsonObj);
