@@ -1,5 +1,6 @@
-const computeUsersStats = (users, progress, courses) => {
-    usersWithStats=[
+window.computeUsersStats = (users, progress, courses) => {
+    usersWithStats=users
+    users.stats={
         stats={
             percent:
             exercises={
@@ -21,17 +22,18 @@ const computeUsersStats = (users, progress, courses) => {
             }
         }
     ]
+    }
     return usersWithStats;
     
 };
-const sortUsers = (users, orderBy, orderDirection) => {
+window.sortUsers = (users, orderBy, orderDirection) => {
 
 };
 
-const filterUsers = (users, search) => {
+window.filterUsers = (users, search) => {
 };
 
-const processCohortData = (options) => {
+window.processCohortData = (options) => {
 
 };
 

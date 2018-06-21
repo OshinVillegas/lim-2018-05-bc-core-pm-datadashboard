@@ -6,7 +6,6 @@ const dataStudents= document.getElementById("tablaUsers");
 const cohortsSelect = document.getElementById("trainingCenters");
 const resp1 = document.getElementById("respuestas1");
 
-
 // // Eventos del dom
 btnLima.addEventListener("click",()=>{
     // console.log(e.target.textContent);
@@ -46,41 +45,62 @@ btndashB.addEventListener("click",()=>{
     document.getElementById('contenido').style.display="block";
    
 })
+
+const getAllData = (cb) => {
+    fetch ('../data/cohorts.json')
+        .then (function (response) {
+        fetch ('../data/cohorts/lim-2018-03-pre-core-pw/users.json')
+            .then (function (responseU) { 
+                fetch ('../data/cohorts/lim-2018-03-pre-core-pw/progress.json')
+                    .then (function (responseP) {
+                        Promise.all([ response.json(), responseU.json(), responseP.json()])
+                            .then(data => {
+                                const [cohorts, users, progress] = data;
+                                cb(cohorts, users, progress)
+                            })
+                    })
+            })
+    })
+}
+
 btnfiltro.addEventListener('change',(e)=>{
 
     if(e.target.value === "students"){
-        fetch ('../data/cohorts/lim-2018-03-pre-core-pw/users.json')
-        .then (function (response) { 
-        return response.json();
-        })
-        .then (function (dataUsers) {
+        getAllData((cohorts, users, progress) => {
             let celda = '';
-            celda += '<tr>';
-            celda += '<th> ID </th>';
-            celda += '<th> SINGUPCOHORT </th>';
-            celda += '<th> NAME </th>';
-            celda += '<th> ROLE </th>';
-            celda += '</tr>'
-            
-            for (i = 0; i < dataUsers.length; i++) {
-                if(dataUsers[i].signupCohort==="lim-2018-03-pre-core-pw"){
-                celda += '<tr>';
-                celda += '<td id= "nombrestabla"><a href="" >' +  dataUsers[i].id + '</a></td>';
-                
-                celda += '<td>' + dataUsers[i].name + '</td>';
-                celda += '<td>'+ dataUsers[i].signupCohort +'</td>';
-                celda += '<td>' + dataUsers[i].role + '</td>';
-                celda += '</tr>';
+            users.forEach((user)=>{
+                const userId = user.id;
+                const userProgress = progress[userId]
+                let userProgressPercent = 0;
+                if (userProgress && userProgress.hasOwnProperty('intro') && userProgress.intro.hasOwnProperty('units')) {
+                    const units = userProgress.intro.units;
+                    const progressTotal = Object.keys(units).reduce((sumProgress, unit) => {
+                        return sumProgress + units[unit].percent
+                    }, 0)
+                    userProgressPercent = progressTotal /  Object.keys(units).length;
                 }
+                celda += '<tr>';
+                celda += '<th> ID </th>';
+                celda += '<th> SINGUPCOHORT </th>';
+                celda += '<th> NAME </th>';
+                celda += '<th> ROLE </th>';
+                celda += '</tr>'
                 
-            }
+                if(user.signupCohort==="lim-2018-03-pre-core-pw"){
+                    celda += '<tr>';
+                    celda += '<td id= "nombrestabla"><a href="" id="usersEstadisticas">' + user.id + '</a></td>';
+                    
+                    celda += '<td>' + user.name + '</td>';
+                    celda += '<td>'+ user.signupCohort +'</td>';
+                    celda += '<td>' + userProgressPercent + '</td>';
+                    celda += '</tr>';
+                }
+            })
+            
             dataStudents.innerHTML = celda;
-                
-
+            document.getElementById('contenidoData').style.display="none";
+            document.getElementById('contenidoFiltros').style.display="block";
         })
-
-        document.getElementById('contenidoData').style.display="none";
-        document.getElementById('contenidoFiltros').style.display="block";
     }
 });
         // //se crea una lista de nombres
