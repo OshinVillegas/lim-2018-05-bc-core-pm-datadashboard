@@ -65,82 +65,79 @@ btnfiltro.addEventListener('change',(e)=>{
 
     if(e.target.value === "students"){
         getAllData( (cohorts, users, progress) => {
-
             //computeUserStats(users,progress,cohorts.courses);
-
             let celda = '';
-            celda += '<tr id="cabecera">';
-                celda += '<th> ID </th>';
-                celda += '<th> NAME </th>';
-                celda += '<th> SIGNUPCOHORTS </th>';
-                celda += '<th> EJERCICIO </th>';
-                celda += '<th> LECTURAS </th>';
-                celda += '<th> QUIZZES </th>';
-                celda += '</tr>'
+            celda += '<tr id="cabecera">'+
+                        '<th> NAME </th>'+
+                        '<th> EJERCICIO </th>'+
+                        '<th> LECTURAS </th>'+
+                        '<th> QUIZZES </th>'+
+                    '</tr>'
             users.forEach((user)=>{
                 const userId = user.id;
                 const userProgress = progress[userId];
-                // let durationTotal="";
-                // let userProgressPercent = 0;
-                let contadorLectura = 0;
-                let contadorQuizzes = 0;
-                let contadorEjercicios = 0;
+                let datoLectura=0;
+                let datoGeneralLectura=0;
+                let datoQuiz=0;
+                let datoGeneralQuiz = 0;
+                let datoEjercicio=0;
+                let datoGeneralEjercicio=0;
                 // se determina el promedio por alumnas
                 if (userProgress && userProgress.hasOwnProperty('intro') && userProgress.intro.hasOwnProperty('units')) {
                     const units = userProgress.intro.units;
-                    const durationTot= userProgress.intro.totalDuration;
                     const progressTotal = Object.keys(units).reduce((sumProgress, unit) => {
-                        return sumProgress + units[unit].percent
+                        return sumProgress + units[unit].percent;
                     }, 0)
-                    // console.log(userProgress.intro.units);
-                    userProgressPercent =(progressTotal/ Object.keys(units).length) + "%";
-                    durationTotal = durationTot;
-                    // console.log(userProgressPercent)
-
+                    userProgressPercent =Math.trunc(progressTotal/ Object.keys(units).length) + "%";
 
                     for(let value in units){
                         const parts = units[value].parts;
                         for (const part in parts) {
-                            // if (object.hasOwnProperty(key)) {
-                            //     const element = object[key];
+                            const exercises= parts[part].exercises;
+                            for (const exercise in exercises) { 
+                                        if(exercises[exercise].hasOwnProperty("completed")){
+                                            datoGeneralEjercicio++;
+                                            if(exercises[exercise].completed === 1){
+                                                datoEjercicio++;
+                                            }
+                                            calcularEjercicio=Math.trunc((datoEjercicio*100)/datoGeneralEjercicio) + "%";
+                                        }
+                            }
+                            if (parts[part].type === "read"){
+                                debugger
+                                if(parts[part].completed === 1){
+                                    datoLectura ++; 
+                                }
+                            datoGeneralLectura++;  // console.log(datoGeneral);
+                            calcularLectura=Math.trunc((datoLectura/datoGeneralLectura)*100) + "%";
+                            if (parts[part].type ==="quiz"){
                                 
-                            // }
-
-                            if (parts[part].type==="read"){
-                                contadorLectura = Object.keys(parts).reduce((sumProgress, unit) => {
-                                    return sumProgress + parts[unit].completed
-                                }, 0)
+                                 if(parts[part].hasOwnProperty("score")){
+                                    console.log("tiene");
+                                 }else{
+                                     console.log("no tiene");
+                                 }
+                                if(parts[part].completed === 1){
+                                    datoQuiz ++;
+                                    // console.log(dato);
+                                }
+                            datoGeneralQuiz++;
+                            calcularQuiz=Math.trunc((datoQuiz/datoGeneralQuiz)*100) + "%";
+                            }
+                        }   
+                        }                           
                             
-                            }
-                            if (parts[part].type==="practice"){
-                                contadorEjercicios = Object.keys(parts).reduce((sumProgress, unit) => {
-                                    return sumProgress + parts[unit].completed
-                                }, 0)
-                            }
-                            if (parts[part].type==="quiz"){
-                                contadorQuizzes = Object.keys(parts).reduce((sumProgress, unit) => {
-                                    return sumProgress + parts[unit].completed
-                                }, 0)
-                            }
-                        }
                     }   
-                    console.log(contadorEjercicios);    
-                    console.log(contadorLectura);                    
-                    console.log(contadorQuizzes);                    
-                
-                    
                 }
 
                 if(user.signupCohort==="lim-2018-03-pre-core-pw"){
-                    celda += '<tr id="cuerpoData">';
-                    celda += '<td id= "nombrestabla"><a href="" id="usersEstadisticas">' + user.id + '</a></td>';
-                    celda += '<td>' + user.name + '</td>';
-                    celda += '<td>'+ user.signupCohort +'</td>';
-                    celda += '<td>' + contadorEjercicios + '</td>';
-                    celda += '<td>' + contadorLectura + '</td>';
-                    celda += '<td>' + contadorQuizzes + '</td>';
-
-                    celda += '</tr>';
+                    celda += '<tr id="cuerpoData">'+
+                                // '<td id= "nombrestabla"><a href="">' + user.id + '</a></td>'+
+                                '<td>' + user.name + '</td>'+
+                                '<td>'+ calcularEjercicio +'</td>'+
+                                '<td>' + calcularLectura + '</td>'+
+                               // '<td>' + calcularQuiz + '</td>'+
+                            '</tr>';
                 }
             })
             
