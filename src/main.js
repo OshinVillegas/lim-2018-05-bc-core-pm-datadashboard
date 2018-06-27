@@ -69,6 +69,7 @@ btnfiltro.addEventListener('change', (e) => {
             let datoLectura = 0, datoGeneralLectura = 0;
             let datoQuiz = 0, datoGeneralQuiz = 0;
             let datoEjercicio = 0, datoGeneralEjercicio = 0;
+            let progressTotalQ=0, calcularEjercicio=0,calcularLectura=0,calcularQuiz=0, QuizzeProgress=0;
             celda += '<tr id="cabecera">' +
                         '<th> NAME </th>' +
                         '<th> EJERCICIO </th>' +
@@ -77,7 +78,7 @@ btnfiltro.addEventListener('change', (e) => {
                     '</tr>'
 
     users.forEach((user)=>{
-        let progressTotalQ=0, calcularEjercicio=0,calcularLectura=0,calcularQuiz=0, QuizzeProgress=0;
+        
             const userId = user.id;
             const userProgress = progress[userId];
             if (userProgress && userProgress.hasOwnProperty('intro') && userProgress.intro.hasOwnProperty('units')) {
@@ -88,8 +89,8 @@ btnfiltro.addEventListener('change', (e) => {
                 }, 0)
                 userProgressPercent = Math.round(progressTotal / Object.keys(units).length);
                     for (let value in units) {
+
                         const parts = units[value].parts;
-                        let progressTotalQ = 0;
                         for (const part in parts) {
                             // Calcular datos de Ejercicios
                             const exercises = parts[part].exercises;
@@ -124,7 +125,9 @@ btnfiltro.addEventListener('change', (e) => {
                                 datoGeneralQuiz++;
 
                             }
+                            
                         }
+                        
                         // Validacion de resultados de Preguntas con score
                         if(datoGeneralQuiz===0 ){
                             calcularQuiz=0;
@@ -132,12 +135,13 @@ btnfiltro.addEventListener('change', (e) => {
 
                             calcularQuiz = Math.round((datoQuiz / datoGeneralQuiz) * 100);
                         }
+                        
                         if(datoQuiz===0 ){
                             QuizzeProgress=0;
                         }else{ 
-
                             QuizzeProgress = Math.round(progressTotalQ / datoQuiz);
                         }
+                        console.log(QuizzeProgress)
                         // Validacion de resultados de Lecturas
                         if(datoGeneralLectura===0 ){
                             calcularLectura = 0;

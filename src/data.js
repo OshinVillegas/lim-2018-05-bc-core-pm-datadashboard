@@ -2,7 +2,7 @@ window.computeUsersStats = (users, progress, courses) => {
             let datoLectura = 0, datoGeneralLectura = 0;
             let datoQuiz = 0, datoGeneralQuiz = 0;
             let datoEjercicio = 0, datoGeneralEjercicio = 0;
-            let progressTotalQ=0, calcularEjercicio=0,calcularLectura=0,calcularQuiz=0, QuizzeProgress=0;  
+            let progressTotalQuiz=0; calcularEjercicio=0,calcularLectura=0,calcularQuiz=0, QuizzeProgress=0;  
             let usuarios=[];
     users.forEach((user)=>{
         if(user.role==="student"){
@@ -16,7 +16,6 @@ window.computeUsersStats = (users, progress, courses) => {
                 userProgressPercent = Math.round(progressTotal / Object.keys(units).length);
                 for (let value in units) {
                     const parts = units[value].parts;
-                    let progressTotalQ = 0;
                     for (const part in parts) {
                         // Calcular datos de Ejercicios
                         const exercises = parts[part].exercises;
@@ -43,21 +42,25 @@ window.computeUsersStats = (users, progress, courses) => {
                         }
                         // Calcular datos de Preguntas
                         if (parts[part].type === "quiz") {
-                            debugger
                             if (parts[part].completed === 1 && parts[part].hasOwnProperty("score")) {
-                                progressTotalQ += parts[part].score;
+                                progressTotalQuiz += parts[part].score;
                                 datoQuiz++;
                             }
-                            QuizzeProgress = Math.round(progressTotalQ / datoQuiz);
                             datoGeneralQuiz++;
                         }
                     }
                     // Validacion de resultados de Preguntas con score
-                    if(datoQuiz===0 ){
+                    if(datoGeneralQuiz===0 ){
                         calcularQuiz=0;
                     }else{ 
 
                         calcularQuiz = Math.round((datoQuiz / datoGeneralQuiz) * 100);
+                    }
+                    if(datoQuiz===0 ){
+                        QuizzeProgress=0;
+                    }else{ 
+
+                        QuizzeProgress = Math.round(progressTotalQuiz / datoQuiz);
                     }
                     // Validacion de resultados de Lecturas
                     if(datoGeneralLectura===0 ){
@@ -85,7 +88,7 @@ window.computeUsersStats = (users, progress, courses) => {
                     total:datoGeneralQuiz,
                     completed:datoQuiz,
                     percent:calcularQuiz,
-                    scoreSum:progressTotalQ,
+                    scoreSum:progressTotalQuiz,
                     scoreAvg:QuizzeProgress
                 }
             } 
