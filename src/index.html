@@ -2,131 +2,154 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device−width, initial−scale=1.0" />
+
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="fuentes/font.css" />
   <link rel="stylesheet" href="fuentes/font.css" />
   <link rel="stylesheet" href="iconos/css/lobster.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css" />
 
   <title>Data Dashboard</title>
+
 </head>
 
 <body>
- <header>
-   <img src="imagenes/logo1.png" alt="">
- </header>
- <hr>
- <div id="general">
-   <section id="menuD">
-     <img src="imagenes/logo.jpg" alt="">
-     <p>Analytics</p>
-     <button id="dashB">
-      <img src="imagenes/icono2.png" alt="">
-      Dashboard
+
+  <header class="col-xs-12">
+    <img src="imagenes/logo1.png" alt="">
+
+  </header>
+  <hr>
+  <div id="general" class="col-xs-12">
+    <section id="menuD">
+      <img src="imagenes/logo.jpg" alt="">
+      <p>Analytics</p>
+      <button id="dashB">
+        <img src="imagenes/icono2.png" alt=""> Dashboard
       </button>
-     <button id="curso">
-        <img src="imagenes/icono1.png" alt="">
-       Courses
+      <br>
+      <button id="curso">
+        <img src="imagenes/icono1.png" alt="">  Courses
       </button>
-   </section>
-   <div id="vl"></div>
-   <section id="contenido">
-     <p> Traning Centers </p>
-     <div id="primeraFila" class="sectionFilas">
+    </section>
+    <div id="vl" class="col-xs-4"></div>
+    <section id="contenido">
+      <p> Traning Centers </p>
+      <div id="primeraFila" class="sectionFilas">
         <button id="cLima" class="centers">Lima</button>
         <button id="cSantiago" class="centers">Santiago</button>
-     </div>
-     <div id="segundaFila" class="sectionFilas">
+      </div>
+      <div id="segundaFila" class="sectionFilas">
         <button id="cGuada" class="centers">Guadalajara</button>
         <button id="cMexico" class="centers">Ciudad de Mexico</button>
-     </div>
-     <div id="terceraFila" class="sectionFilas">
+      </div>
+      <div id="terceraFila" class="sectionFilas">
         <button id="cSaoPa" class="centers">Sao Paolo</button>
-     </div>
-   </section>
-   <div id="selectCenters" style="display: none;">
-     <button>
-       <i class="icon-fast-bw"></i>
-     </button>
-     <button>
-      <i class="icon-fast-fw"></i>
-    </button>
-     <p>Selecciona tu cohort: </p>
-    <select id="trainingCenters">
+      </div>
+    </section>
+    <div id="selectCenters" style="display: none;">
+      <button>
+        <i class="icon-fast-bw"></i>
+      </button>
+      <button>
+        <i class="icon-fast-fw"></i>
+      </button>
 
-    </select>
-   </div>
-   <div id="contenidoData" style="display: none">
+      <select id="trainingCenters">
+      </select>
+    </div>
+    <div id="contenidoData" style="display: none">
       <section id="graphicsTotal">
-        <div class="donut-chart-block block"> 
-          <h2 class="titular">OS AUDIENCE STATS</h2>
+        <div class="donut-chart-block block">
+
           <div id="contenidoEstadistico">
             <div class="os-percentages">
               <div>
-                  <img src="imagenes/icono3.png" alt="">
-                  <p class="ios os scnd-font-color">Total Students</p>
-                  <p class="os-percentage">21<sup>%</sup></p>
+                <img src="imagenes/icono3.png" alt="">
+                <p class="ios os scnd-font-color">Total Students</p>
+                <p class="os-percentage">21
+                  <sup>%</sup>
+                </p>
               </div>
               <div>
-                  <img src="imagenes/icono4.png" alt="">
-                  <p class="mac os scnd-font-color">Total Quizzes</p>
-                  <p class="os-percentage">39<sup>%</sup></p>
+                <img src="imagenes/icono4.png" alt="">
+                <p class="mac os scnd-font-color">Total Quizzes</p>
+                <p class="os-percentage">39
+                  <sup>%</sup>
+                </p>
               </div>
               <div>
-                  <img src="imagenes/icono5.png" alt="">
-                  <p class="linux os scnd-font-color">Total Reading</p>
-                  <p class="os-percentage">9<sup>%</sup></p>
+                <img src="imagenes/icono5.png" alt="">
+                <p class="linux os scnd-font-color">Total Reading</p>
+                <p class="os-percentage">9
+                  <sup>%</sup>
+                </p>
               </div>
               <div>
-                  <img src="imagenes/icono6.png" alt="">
-                  <p class="win os scnd-font-color">Total Excercises</p>
-                  <p class="os-percentage">31<sup>%</sup></p>
+                <img src="imagenes/icono6.png" alt="">
+                <p class="win os scnd-font-color">Total Excercises</p>
+                <p class="os-percentage">31
+                  <sup>%</sup>
+                </p>
               </div>
             </div>
-          
           </div>
-          <div id="contenidoGrafico">
+          <div id="contenidoGrafico" col>
             <div class="donut-chart">
               <!-- PORCIONES GRAFICO CIRCULAR
               ELIMINADO #donut-chart
               MODIFICADO CSS de .donut-chart -->
-                <div id="porcion1" class="recorte"><div class="quesito ios" data-rel="21"></div></div>
-                <div id="porcion2" class="recorte"><div class="quesito mac" data-rel="39"></div></div>
-                <div id="porcion3" class="recorte"><div class="quesito win" data-rel="31"></div></div>
-                <div id="porcionFin" class="recorte"><div class="quesito linux" data-rel="9"></div></div>
-                <!-- FIN AÑADIDO GRÄFICO -->
-                <p class="center-date">JUNE<br><span class="scnd-font-color">2013</span></p>        
+              <div id="porcion1" class="recorte">
+                <div class="quesito ios" data-rel="21"></div>
               </div>
-          </div>
-        </div>
+              <div id="porcion2" class="recorte">
+                <div class="quesito mac" data-rel="39"></div>
+              </div>
+              <div id="porcion3" class="recorte">
+                <div class="quesito win" data-rel="31"></div>
+              </div>
+              <div id="porcionFin" class="recorte">
+                <div class="quesito linux" data-rel="9"></div>
+              </div>
+              <!-- FIN AÑADIDO GRÄFICO -->
+              <p class="center-date">JUNE
+                <br>
+                <span class="scnd-font-color">2013</span>
+              </p>
+            </div>
+            </div>
       </section>
-      
+
       <p id="chooseFilter">Filtros por : </p>
       <section id="filtros">
         <select id="filtroPor">
           <option value="-">Seleccionar ...</option>
           <option value="students">Students</option>
-          <option value="-">Quizzes</option>
+          <option value="Quizz">Quizzes</option>
           <option value="-">Readings</option>
           <option value="-">Excercises</option>
         </select>
       </section>
-   </div>
-   <div id="contenidoFiltros" style="display: none">
-      <div id="buscador">
-       <p>Buscar: </p> <input type="text" placeholder="Search">
       </div>
-      <div id = "listStudents">
-        <table id="tablaUsers"></table>
-      </div>
-      <div id = "listQuizzes">
+      <div id="contenidoFiltros" style="display: none">
+        <div id="buscador">
+          <p>Buscar: </p>
+          <input type="text" placeholder="Search">
+        </div>
+        <div id="listStudents">
+          <table id="tablaUsers"></table>
+        </div>
+        <div id="listQuizzes">
+
+        </div>
 
       </div>
+    </div>
+    <script src="main.js"></script>
 
-   </div>
- </div>
-  <script src="main.js"></script>
- 
 </body>
+
 </html>

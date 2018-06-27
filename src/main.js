@@ -10,7 +10,8 @@ const resp1 = document.getElementById("respuestas1");
 btnLima.addEventListener("click",()=>{
     // console.log(e.target.textContent);
     // document.getElementById('contenidoData').style.display="block";
-    fetch ('../data/cohorts.json'). then (function (response) { 
+    fetch ('../data/cohorts.json')
+    .then (function (response) { 
         return response.json();
     })
     .then (function (dataCohorts) { 
@@ -70,12 +71,12 @@ btnfiltro.addEventListener('change',(e)=>{
 
             let celda = '';
             celda += '<tr id="cabecera">';
-                celda += '<th> ID </th>';
-                celda += '<th> NAME </th>';
-                celda += '<th> SIGNUPCOHORTS </th>';
-                celda += '<th> EJERCICIO </th>';
-                celda += '<th> LECTURAS </th>';
-                celda += '<th> QUIZZES </th>';
+                celda += '<th> Id </th>';
+                celda += '<th> Name </th>';
+                celda += '<th> SignupCohorts </th>';
+                celda += '<th> Ejercicios </th>';
+                celda += '<th> Lecturas </th>';
+                celda += '<th> Quizzes </th>';
                 celda += '</tr>'
             users.forEach((user)=>{
                 const userId = user.id;
@@ -150,64 +151,18 @@ btnfiltro.addEventListener('change',(e)=>{
         })
     }
 });
-        // //se crea una lista de nombres
-            // let linewUp= document.createElement("ul");
-            // //se le asigna una clase a la etiqueta ul
-            // linewUp.className = "listEstudiantes";
-            // let linew= document.createElement("li");
-            // dataStudents.appendChild(linewUp);
-            // //se le asigna una clase a la etiqueta li
-            // linew.className = "listasEstudiantes";
+btnfiltro.addEventListener('change', () => {
+    
+        fetch("../data/cohorts/lim-2018-03-pre-core-pw/progress.json")
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (partss){
+            for(list in partss){
+                console.log(list)
+            }
             
-            // linewUp.appendChild(linew);
-            // let rutaDataNombres=document.createElement("a");
-            // rutaDataNombres.textContent = elemento["name"];
-            // //se le asigna una clase a la etiqueta a
-            // rutaDataNombres.className ="rutasNombres";
-            // rutaDataNombres.id ="rutasName";
-            // linew.appendChild(rutaDataNombres);
-            // console.log(document.getElementById("rutasName")[0]);
-            // })       
-            // document.getElementById("rutasName").addEventListener("click",(e)=>{
-            //     e.preventDefault();
-                
-            //     document.getElementById('contenidoFiltros').style.display="none";
-            //     document.getElementById('estatus').style.display="block";
-            //     fetch('../data/cohorts/lim-2018-03-pre-core-pw/users.json')
-            //     .then((response) => {
-            //         return response.json();
-            //     })
-            //     .then((myUser) => {
-                   
-            //     })
-                
-            // })
-
-// function cargandodataQuizzes(jsonObj){
-    //     let progress= Object.keys(jsonObj);
-    
-    //     // console.log(jsonObj);
-    //     for (let i = 0; i < progress.length; i++) {
-    //         const element = progress[i];
-    //         // const propiedadElemento = jsonObj[element].intro;
-    //         // const porpiedadDura=jsonObj[element].intro.totalDuration;
-    //         const porpiedadDura=jsonObj[element].intro.units[i];
-    //         const porpiedadDur=jsonObj[porpiedadDura];
-    
-    //         console.log(porpiedadDur);
-                    
-    //     }
-        
-    // }
-
-    // function cargarDatosProgress(){
-//     let request = new XMLHttpRequest(); 
-//     request.open('GET', '../data/cohorts/lim-2018-03-pre-core-pw/progress.json', true);
-//     request.onload = function () {
-//       if(request.status === 200){
-//        let progressQuizzes = JSON.parse(request.response);
-//        cargandodataQuizzes(progressQuizzes);
-//         }
-//     }
-//     request.send();
-// }
+        }) 
+    document.getElementById('contenidoData').style.display = "none";
+    document.getElementById('contenidoFiltros').style.display = "block";
+}) 
