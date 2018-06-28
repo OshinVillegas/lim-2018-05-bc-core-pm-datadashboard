@@ -139,10 +139,7 @@ window.filterUsers = (users, search) => {
 window.processCohortData = (options) => {
   let arrC= Object.keys(options.cohort.coursesIndex);
   let computeUsere=computeUsersStats(options.cohortData.users,options.cohortData.progress,arrC);
-  computeUsere =sortUsers(computeUsere,options.orderBy,options.orderDirection);
-  if(options.search !== undefined) {
-    computeUsere=filterUsers(sortUsersF,options.search); 
-    return computeUsere; 
-  }
-  return computeUsere;
+  let sortUserWithCompute =sortUsers(computeUsere,options.orderBy,options.orderDirection);
+  return sortUserWithCompute;
+  
 };
