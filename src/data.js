@@ -98,7 +98,6 @@ window.computeUsersStats = (users, progress, courses) => {
 return usuarios;
 
 };
-
 window.sortUsers = (users, orderBy, orderDirection) => { 
     if(orderBy === "name" && orderDirection === "Ascendente"){
         users.sort((primerD,segundoD)=>{
@@ -130,13 +129,20 @@ window.sortUsers = (users, orderBy, orderDirection) => {
             return (primerD.stats.quizzes.percent - segundoD.stats.quizzes.percent);
     })
     }
+    return users;
 };
-
 window.filterUsers = (users, search) => {
-   return  users.filter((user)=>{
-        return user.name.toLowerCase() === search;
+  users.filter((user)=>{
+        return user.name.toLowerCase().indexOf(search.toLowerCase()) > -1;
 })
 }
 window.processCohortData = (options) => {
-
+  let arrC= Object.keys(options.cohort.coursesIndex);
+  let computeUsere=computeUsersStats(options.cohortData.users,options.cohortData.progress,arrC);
+  computeUsere =sortUsers(computeUsere,options.orderBy,options.orderDirection);
+  if(options.search !== undefined) {
+    computeUsere=filterUsers(sortUsersF,options.search); 
+    return computeUsere; 
+  }
+  return computeUsere;
 };

@@ -59,92 +59,36 @@
     </select>
    </div>
    <div id="contenidoData" style="display: none">
-      <section id="graphicsTotal">
-        <div class="donut-chart-block block"> 
-          <h2 class="titular">OS AUDIENCE STATS</h2>
-          <div id="contenidoEstadistico">
-            <div class="os-percentages">
-              <div>
-                  <img src="imagenes/icono3.png" alt="">
-                  <p class="ios os scnd-font-color">Total Students</p>
-                  <p class="os-percentage">21<sup>%</sup></p>
-              </div>
-              <div>
-                  <img src="imagenes/icono4.png" alt="">
-                  <p class="mac os scnd-font-color">Total Quizzes</p>
-                  <p class="os-percentage">39<sup>%</sup></p>
-              </div>
-              <div>
-                  <img src="imagenes/icono5.png" alt="">
-                  <p class="linux os scnd-font-color">Total Reading</p>
-                  <p class="os-percentage">9<sup>%</sup></p>
-              </div>
-              <div>
-                  <img src="imagenes/icono6.png" alt="">
-                  <p class="win os scnd-font-color">Total Excercises</p>
-                  <p class="os-percentage">31<sup>%</sup></p>
-              </div>
-            </div>
-          
-          </div>
-          <div id="contenidoGrafico">
-            <div class="donut-chart">
-              <!-- PORCIONES GRAFICO CIRCULAR
-              ELIMINADO #donut-chart
-              MODIFICADO CSS de .donut-chart -->
-                <div id="porcion1" class="recorte"><div class="quesito ios" data-rel="21"></div></div>
-                <div id="porcion2" class="recorte"><div class="quesito mac" data-rel="39"></div></div>
-                <div id="porcion3" class="recorte"><div class="quesito win" data-rel="31"></div></div>
-                <div id="porcionFin" class="recorte"><div class="quesito linux" data-rel="9"></div></div>
-                <!-- FIN AÑADIDO GRÄFICO -->
-                <p class="center-date">JUNE<br><span class="scnd-font-color">2013</span></p>        
-              </div>
-          </div>
+    <div class="container">
+      <div id="contenidoFiltros">
+        <div id="buscador">
+         <p>Buscar: </p> <input type="text" placeholder="Search" id="textU">
+         <button id="search">Search</button>
+         <section id="filtrosOrder">
+          <select id="filtroPorOrderBy">
+            <option value="-">Seleccionar ...</option>
+            <option value="name">Nombre</option>
+            <option value="completitud">Completitud</option>
+            <option value="ejercicios">Excercises</option>
+            <option value="lecturas">Lecturas</option>
+            <option value="quizzes">Quizzes</option>
+            <option value="-">Quizzes-Score</option>
+          </select>
+          <select id="filtroPorDirection" disabled>
+            <option value="-">Seleccionar ...</option>
+            <option value="Ascendente">Ascendente</option>
+            <option value="Descendente">Descendente</option>
+          </select>
+        </section>
         </div>
-      </section>
-      
-      <p id="chooseFilter">Filtros por : </p>
-      <section id="filtros">
-        <select id="filtroPor">
-          <option value="-">Seleccionar ...</option>
-          <option value="students">Students</option>
-          <option value="-">Quizzes</option>
-          <option value="-">Readings</option>
-          <option value="-">Excercises</option>
-        </select>
-      </section>
+        <div id = "listStudents">
+          <table id="tablaUsers"></table>
+        </div>
+        <div id = "listQuizzes">
+        </div>
+     </div>   
    </div>
-   <div id="contenidoFiltros" style="display: none">
-      <div id="buscador">
-        but
-       <p>Buscar: </p> <input type="text" placeholder="Search" id="textU">
-       <button id="search">Search</button>
-       <section id="filtrosOrder">
-        <select id="filtroPorOrderBy">
-          <option value="-">Seleccionar ...</option>
-          <option value="name">Nombre</option>
-          <option value="completitud">Completitud</option>
-          <option value="ejercicios">Excercises</option>
-          <option value="lecturas">Lecturas</option>
-          <option value="quizzes">Quizzes</option>
-          <option value="-">Quizzes-Score</option>
-        </select>
-        <select id="filtroPorDirection" disabled>
-          <option value="-">Seleccionar ...</option>
-          <option value="Ascendente">Ascendente</option>
-          <option value="Descendente">Descendente</option>
-          
-        </select>
-      </section>
-      </div>
-      <div id = "listStudents">
-        <table id="tablaUsers"></table>
-      </div>
-      <div id = "listQuizzes">
-
-      </div>
-
-   </div>
+   
  </div>
   <script src="data.js"></script>
   <script src="main.js"></script>

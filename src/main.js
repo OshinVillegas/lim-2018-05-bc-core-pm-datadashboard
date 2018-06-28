@@ -4,16 +4,32 @@ const btndashB = document.getElementById("dashB");
 const btnfiltro = document.getElementById("filtroPor");
 const dataStudents = document.getElementById("tablaUsers");
 const cohortsSelect = document.getElementById("trainingCenters");
-const resp1 = document.getElementById("respuestas1");
-const selectOrderBy= document.getElementById("filtroPorOrderBy");
-const selectDirection=document.getElementById("filtroPorDirection");
-const searchUser= document.getElementById("search");
-const textUser= document.getElementById("textU");
+const selectOrderBy = document.getElementById("filtroPorOrderBy");
+const selectDirection = document.getElementById("filtroPorDirection");
+const searchUser = document.getElementById("search");
+const textUser = document.getElementById("textU");
 const tr = dataStudents.getElementsByTagName("thead");
 // // Eventos del dom
+let options = {
+    cohort: '',
+    cohortData: {
+        users: '',
+        progress: ''
+    },
+    orderBy: '',
+    orderDirection: '',
+    search: ''
+}
+const procesandoData = ((users, progress, cohorts) => {
+    options.cohort = cohorts;
+    options.cohortData.users = users;
+    options.cohortData.progress = progress;
+    options.orderBy = "name";
+    options.orderDirection = "Asc";
+    options.search = "";
+    return processCohortData(options);
+})
 btnLima.addEventListener("click", () => {
-    // console.log(e.target.textContent);
-    // document.getElementById('contenidoData').style.display="block";
     fetch('../data/cohorts.json').then(function (response) {
         return response.json();
     })
@@ -23,20 +39,61 @@ btnLima.addEventListener("click", () => {
                     cohortsSelect.innerHTML += "<option value='" + elemento["id"] + "'>" + elemento["id"] + "</option>";
                 }
             });
-            cohortsSelect.addEventListener("change", (e) => {
-                if (e.target.value === "lim-2018-03-pre-core-pw") {
-
-                    document.getElementById('selectCenters').style.display = "none";
-                    document.getElementById('contenidoData').style.display = "block";
-                    // cargarDatosProgress();
-                }
-            });
+            
         })
         .catch(error =>
             console.error('Error: Nat algo haces mal', error));
     document.getElementById('contenido').style.display = "none";
     document.getElementById('selectCenters').style.display = "block";
 })
+
+cohortsSelect.addEventListener("change", (e) => {
+
+    if (e.target.value === "lim-2018-03-pre-core-pw") {
+        getAllData((cohorts, users, progress) => {
+            let celda = '';
+            celda += '<tr id="cabecera">' +
+                '<th> NAME </th>' +
+                '<th> COMPLETITUD </th>' +
+                '<th> EJERCICIO </th>' +
+                '<th> LECTURAS </th>' +
+                '<th> QUIZZES </th>' +
+                '</tr>'
+            // const onlyUnique = (value, index, self) => {
+            //     return self.indexOf(value) === index;
+            // }
+
+            filteredCohorts = cohorts.filter(item => {return item.id === e.target.value});
+
+            /* let courses = [];
+            cohorts.forEach((c) => {
+                if (c.hasOwnProperty("coursesIndex")) {
+                    courses.concat(Object.keys(c.coursesIndex));
+                }
+            });
+            coursesC = courses.filter(onlyUnique).sort();
+ */procesandoData(users, progress, filteredCohorts[0]);
+            let usersWithStats=procesandoData(options);
+
+            usersWithStats.forEach((user) => {
+                celda += '<tr id="cuerpoData">' +
+                    // '<td id= "nombrestabla"><a href="">' + user.id + '</a></td>'+
+                    '<td>' + user.name + '</td>' +
+                    '<td>' + user.stats.percent + '</td>' +
+                    '<td>' + user.stats.exercises.percent + '</td>' +
+                    '<td>' + user.stats.reads.percent + '</td>' +
+                    '<td>' + user.stats.quizzes.percent + '</td>' +
+                    '</tr>';
+            })
+            dataStudents.innerHTML = celda;
+
+        })
+        document.getElementById('selectCenters').style.display = "none";
+        document.getElementById('contenidoData').style.display = "block";
+        // cargarDatosProgress();
+    }
+});
+
 btndashB.addEventListener("click", () => {
 
     document.getElementById('contenidoData').style.display = "none";
@@ -64,193 +121,137 @@ const getAllData = (cb) => {
                 })
         })
 }
-btnfiltro.addEventListener('change', (e) => {
-    if (e.target.value === "students") {
-        getAllData((cohorts, users, progress) => {
-            let celda = '';
-            celda += '<tr id="cabecera">' +
-                        '<th> NAME </th>' +
-                        '<th> COMPLETITUD </th>' +
-                        '<th> EJERCICIO </th>' +
-                        '<th> LECTURAS </th>' +
-                        '<th> QUIZZES </th>' +
-                    '</tr>'
-            const onlyUnique = (value, index, self) => {
-                return self.indexOf(value) === index;
-            }
-            let courses = [];
-            cohorts.forEach((c) => {
-                if(c.hasOwnProperty("coursesIndex")){
-                    courses.concat(Object.keys(c.coursesIndex));
-                }
-            });
-            coursesC = courses.filter(onlyUnique).sort();
-
-            const usersWithStats = computeUsersStats(users, progress, coursesC);
-
-            usersWithStats.forEach((user)=>{
-                celda += '<tr id="cuerpoData">' +
-                    // '<td id= "nombrestabla"><a href="">' + user.id + '</a></td>'+
-                            '<td>' + user.name + '</td>' +
-                            '<td>' + user.stats.percent + '</td>' +
-                            '<td>' + user.stats.exercises.percent + '</td>' +
-                            '<td>' + user.stats.reads.percent + '</td>' +
-                            '<td>' + user.stats.quizzes.percent + '</td>' +
-                        '</tr>';
-    })
-    dataStudents.innerHTML = celda;
-    document.getElementById('contenidoData').style.display = "none";
-    document.getElementById('contenidoFiltros').style.display = "block";     
-    })
-}
-});
-selectOrderBy.addEventListener("change",()=>{
-        getAllData((cohorts, users, progress) => {
-            let celda = '';
-            celda += '<tr id="cabecera">' +
-                        '<th> NAME </th>' +
-                        '<th> COMPLETITUD </th>' +
-                        '<th> EJERCICIO </th>' +
-                        '<th> LECTURAS </th>' +
-                        '<th> QUIZZES </th>' +
-                    '</tr>'
-            const onlyUnique = (value, index, self) => {
-                return self.indexOf(value) === index;
-            }
-            let courses = [];
-            cohorts.forEach((c) => {
-                if(c.hasOwnProperty("coursesIndex")){
-                    courses.concat(Object.keys(c.coursesIndex));
-                }
-            });
-            coursesC = courses.filter(onlyUnique).sort();
-
-            const usersWithStats = computeUsersStats(users, progress, coursesC);
-            if(selectOrderBy.value === "name"){
-            usersWithStats.forEach((user)=>{
-               
-                    sortUsers(usersWithStats,selectOrderBy.value,"Ascendente");
-                    celda += '<tr id="cuerpoData">' +
-                    // '<td id= "nombrestabla"><a href="">' + user.id + '</a></td>'+
-                            '<td>' + user.name + '</td>' +
-                            '<td>' + user.stats.percent + '</td>' +
-                            '<td>' + user.stats.exercises.percent + '</td>' +
-                            '<td>' + user.stats.reads.percent + '</td>' +
-                            '<td>' + user.stats.quizzes.percent + '</td>' +
-                        '</tr>';
-            }) 
-            }
-            if(selectOrderBy.value === "completitud"){
-            usersWithStats.forEach((user)=>{
-                    sortUsers(usersWithStats,selectOrderBy.value,"Ascendente");
-                    celda += '<tr id="cuerpoData">' +
-                    // '<td id= "nombrestabla"><a href="">' + user.id + '</a></td>'+
-                            '<td>' + user.name + '</td>' +
-                            '<td>' + user.stats.percent + '</td>' +
-                            '<td>' + user.stats.exercises.percent + '</td>' +
-                            '<td>' + user.stats.reads.percent + '</td>' +
-                            '<td>' + user.stats.quizzes.percent + '</td>' +
-                        '</tr>';
-                })
-            }
-            if(selectOrderBy.value === "ejercicios"){
-                    usersWithStats.forEach((user)=>{
-                        sortUsers(usersWithStats,selectOrderBy.value,"Ascendente");
-                        celda += '<tr id="cuerpoData">' +
-                        // '<td id= "nombrestabla"><a href="">' + user.id + '</a></td>'+
-                                '<td>' + user.name + '</td>' +
-                                '<td>' + user.stats.percent + '</td>' +
-                                '<td>' + user.stats.exercises.percent + '</td>' +
-                                '<td>' + user.stats.reads.percent + '</td>' +
-                                '<td>' + user.stats.quizzes.percent + '</td>' +
-                            '</tr>';
-                    })
-            }
-            if(selectOrderBy.value === "lecturas"){
-            usersWithStats.forEach((user)=>{
-            
-                    sortUsers(usersWithStats,selectOrderBy.value,"Ascendente");
-                
-                    celda += '<tr id="cuerpoData">' +
-                    // '<td id= "nombrestabla"><a href="">' + user.id + '</a></td>'+
-                            '<td>' + user.name + '</td>' +
-                            '<td>' + user.stats.percent + '</td>' +
-                            '<td>' + user.stats.exercises.percent + '</td>' +
-                            '<td>' + user.stats.reads.percent + '</td>' +
-                            '<td>' + user.stats.quizzes.percent + '</td>' +
-                        '</tr>';
-                })
-            }
-            if(selectOrderBy.value === "quizzes"){
-            usersWithStats.forEach((user)=>{
-                 sortUsers(usersWithStats,selectOrderBy.value,"Ascendente");
-                    celda += '<tr id="cuerpoData">' +
-                    // '<td id= "nombrestabla"><a href="">' + user.id + '</a></td>'+
-                            '<td>' + user.name + '</td>' +
-                            '<td>' + user.stats.percent + '</td>' +
-                            '<td>' + user.stats.exercises.percent + '</td>' +
-                            '<td>' + user.stats.reads.percent + '</td>' +
-                            '<td>' + user.stats.quizzes.percent + '</td>' +
-                        '</tr>';
-                })
-            }
-
-        dataStudents.innerHTML = celda;
-        document.getElementById('contenidoData').style.display = "none";
-        document.getElementById('contenidoFiltros').style.display = "block";     
-    })
-    
-  })
-  selectDirection.addEventListener("change",()=>{
-    //   const optionsDirections=optionsDirection[selectDirection.value];
-    //   sortUsers(usersWithStats,optionsBy,optionsDirections);
-  })
-searchUser.addEventListener("click",()=>{
-
+selectOrderBy.addEventListener("change", () => {
     getAllData((cohorts, users, progress) => {
         let celda = '';
         celda += '<tr id="cabecera">' +
-                    '<th> NAME </th>' +
-                    '<th> COMPLETITUD </th>' +
-                    '<th> EJERCICIO </th>' +
-                    '<th> LECTURAS </th>' +
-                    '<th> QUIZZES </th>' +
-                '</tr>'
+            '<th> NAME </th>' +
+            '<th> COMPLETITUD </th>' +
+            '<th> EJERCICIO </th>' +
+            '<th> LECTURAS </th>' +
+            '<th> QUIZZES </th>' +
+            '</tr>'
         const onlyUnique = (value, index, self) => {
             return self.indexOf(value) === index;
         }
         let courses = [];
         cohorts.forEach((c) => {
-            if(c.hasOwnProperty("coursesIndex")){
+            if (c.hasOwnProperty("coursesIndex")) {
                 courses.concat(Object.keys(c.coursesIndex));
             }
         });
         coursesC = courses.filter(onlyUnique).sort();
 
         const usersWithStats = computeUsersStats(users, progress, coursesC);
-        usersWithStats.forEach((user)=>{
-                    for (i = 0; i < tr.length; i++) {
-                        /* Obtenemos todas las celdas de la fila, no sólo la primera */
-                        td = tr[i].getElementsByTagName("tbody");
-                        for (j = 0; j < td.length; j++) {
-                          if (td[j] && td[j].filterUsers(usersWithStats,textUser.value)) {
-                              
-                            celda += '<tr id="cuerpoData" name="thead">' +
-                            // '<td id= "nombrestabla"><a href="">' + user.id + '</a></td>'+
-                                    '<td name="tbody">' + user.name + '</td>' +
-                                    '<td name="tbody">' + user.stats.percent + '</td>' +
-                                    '<td name="tbody">' + user.stats.exercises.percent + '</td>' +
-                                    '<td name="tbody">' + user.stats.reads.percent + '</td>' +
-                                    '<td name="tbody">' + user.stats.quizzes.percent + '</td>' +
-                                '</tr>';
-                          }
-                        }
+        if (selectOrderBy.value === "name") {
+            usersWithStats.forEach((user) => {
 
-                      }
-        }) 
+                sortUsers(usersWithStats, selectOrderBy.value, "Ascendente");
+                celda += '<tr id="cuerpoData">' +
+                    // '<td id= "nombrestabla"><a href="">' + user.id + '</a></td>'+
+                    '<td>' + user.name + '</td>' +
+                    '<td>' + user.stats.percent + '</td>' +
+                    '<td>' + user.stats.exercises.percent + '</td>' +
+                    '<td>' + user.stats.reads.percent + '</td>' +
+                    '<td>' + user.stats.quizzes.percent + '</td>' +
+                    '</tr>';
+            })
+        }
+        if (selectOrderBy.value === "completitud") {
+            usersWithStats.forEach((user) => {
+                sortUsers(usersWithStats, selectOrderBy.value, "Ascendente");
+                celda += '<tr id="cuerpoData">' +
+                    // '<td id= "nombrestabla"><a href="">' + user.id + '</a></td>'+
+                    '<td>' + user.name + '</td>' +
+                    '<td>' + user.stats.percent + '</td>' +
+                    '<td>' + user.stats.exercises.percent + '</td>' +
+                    '<td>' + user.stats.reads.percent + '</td>' +
+                    '<td>' + user.stats.quizzes.percent + '</td>' +
+                    '</tr>';
+            })
+        }
+        if (selectOrderBy.value === "ejercicios") {
+            usersWithStats.forEach((user) => {
+                sortUsers(usersWithStats, selectOrderBy.value, "Ascendente");
+                celda += '<tr id="cuerpoData">' +
+                    // '<td id= "nombrestabla"><a href="">' + user.id + '</a></td>'+
+                    '<td>' + user.name + '</td>' +
+                    '<td>' + user.stats.percent + '</td>' +
+                    '<td>' + user.stats.exercises.percent + '</td>' +
+                    '<td>' + user.stats.reads.percent + '</td>' +
+                    '<td>' + user.stats.quizzes.percent + '</td>' +
+                    '</tr>';
+            })
+        }
+        if (selectOrderBy.value === "lecturas") {
+            usersWithStats.forEach((user) => {
 
-    dataStudents.innerHTML = celda;
-    document.getElementById('contenidoData').style.display = "none";
-    document.getElementById('contenidoFiltros').style.display = "block";     
+                sortUsers(usersWithStats, selectOrderBy.value, "Ascendente");
+
+                celda += '<tr id="cuerpoData">' +
+                    // '<td id= "nombrestabla"><a href="">' + user.id + '</a></td>'+
+                    '<td>' + user.name + '</td>' +
+                    '<td>' + user.stats.percent + '</td>' +
+                    '<td>' + user.stats.exercises.percent + '</td>' +
+                    '<td>' + user.stats.reads.percent + '</td>' +
+                    '<td>' + user.stats.quizzes.percent + '</td>' +
+                    '</tr>';
+            })
+        }
+        if (selectOrderBy.value === "quizzes") {
+            usersWithStats.forEach((user) => {
+                sortUsers(usersWithStats, selectOrderBy.value, "Ascendente");
+                celda += '<tr id="cuerpoData">' +
+                    // '<td id= "nombrestabla"><a href="">' + user.id + '</a></td>'+
+                    '<td>' + user.name + '</td>' +
+                    '<td>' + user.stats.percent + '</td>' +
+                    '<td>' + user.stats.exercises.percent + '</td>' +
+                    '<td>' + user.stats.reads.percent + '</td>' +
+                    '<td>' + user.stats.quizzes.percent + '</td>' +
+                    '</tr>';
+            })
+        }
+
+        dataStudents.innerHTML = celda;
+        document.getElementById('contenidoData').style.display = "none";
+        document.getElementById('contenidoFiltros').style.display = "block";
+    })
+
 })
+selectDirection.addEventListener("change", () => {
+    //   const optionsDirections=optionsDirection[selectDirection.value];
+    //   sortUsers(usersWithStats,optionsBy,optionsDirections);
+})
+searchUser.addEventListener("click", () => {
+
+    getAllData((cohorts, users, progress) => {
+        let celda = '';
+        celda += '<tr id="cabecera">' +
+            '<th> NAME </th>' +
+            '<th> COMPLETITUD </th>' +
+            '<th> EJERCICIO </th>' +
+            '<th> LECTURAS </th>' +
+            '<th> QUIZZES </th>' +
+            '</tr>'
+
+        options.search=textUser.value;
+        procesandoData(options);
+        filteredCohorts = cohorts.filter(item => {return item.id === e.target.value});
+        let usersWithStats=procesandoData(users, progress, filteredCohorts[0]);
+        usersWithStats.forEach((user) => {
+
+                        celda += '<tr name="thead">' +
+                            // '<td id= "nombrestabla"><a href="">' + user.id + '</a></td>'+
+                            '<td name="tbody">' + user.name + '</td>' +
+                            '<td name="tbody">' + user.stats.percent + '</td>' +
+                            '<td name="tbody">' + user.stats.exercises.percent + '</td>' +
+                            '<td name="tbody">' + user.stats.reads.percent + '</td>' +
+                            '<td name="tbody">' + user.stats.quizzes.percent + '</td>' +
+                            '</tr>';
+        })
+
+        dataStudents.innerHTML = celda;
+        document.getElementById('contenidoData').style.display = "none";
+        document.getElementById('contenidoFiltros').style.display = "block";
+    })
 })
