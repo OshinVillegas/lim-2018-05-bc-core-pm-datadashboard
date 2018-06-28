@@ -117,20 +117,20 @@
    <div id="contenidoFiltros" style="display: none">
       <div id="buscador">
        <p>Buscar: </p> <input type="text" placeholder="Search">
-       <section id="filtros">
-        <select id="filtroPor">
+       <section id="filtrosOrder">
+        <select id="filtroPorOrderBy">
           <option value="-">Seleccionar ...</option>
-          <option value="-">Nombre</option>
-          <option value="-">Completitud</option>
-          <option value="-">Excercises</option>
-          <option value="-">Lecturas</option>
-          <option value="-">Quizzes</option>
+          <option value="name">Nombre</option>
+          <option value="completitud">Completitud</option>
+          <option value="ejercicios">Excercises</option>
+          <option value="lecturas">Lecturas</option>
+          <option value="quizzes">Quizzes</option>
           <option value="-">Quizzes-Score</option>
         </select>
-        <select id="filtroPor">
+        <select id="filtroPorDirection">
           <option value="-">Seleccionar ...</option>
-          <option value="-">Ascendente</option>
-          <option value="-">Descendente</option>
+          <option value="Ascendente">Ascendente</option>
+          <option value="Descendente">Descendente</option>
           
         </select>
       </section>
@@ -144,6 +144,7 @@
 
    </div>
  </div>
+  <script src="data.js"></script>
   <script src="main.js"></script>
  
 </body>

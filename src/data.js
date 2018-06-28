@@ -3,7 +3,7 @@ window.computeUsersStats = (users, progress, courses) => {
             let datoQuiz = 0, datoGeneralQuiz = 0;
             let datoEjercicio = 0, datoGeneralEjercicio = 0;
             let progressTotalQuiz=0; calcularEjercicio=0,calcularLectura=0,calcularQuiz=0, QuizzeProgress=0;  
-            let usuarios=[];
+            let usuarios=users;
     users.forEach((user)=>{
         if(user.role==="student"){
             const userId = user.id;
@@ -72,7 +72,6 @@ window.computeUsersStats = (users, progress, courses) => {
             }
         }
     const usersWithStats= {
-            stats:{
                 percent:userProgressPercent,
                 exercises:{
                     total:datoGeneralEjercicio,
@@ -91,16 +90,67 @@ window.computeUsersStats = (users, progress, courses) => {
                     scoreSum:progressTotalQuiz,
                     scoreAvg:QuizzeProgress
                 }
-            } 
+            
         }
-        usuarios.push(usersWithStats);
+        user.stats=usersWithStats ;
     });
 
 return usuarios;
 
 };
 
-window.sortUsers = (users, orderBy, orderDirection) => {
+window.sortUsers = (users, orderBy, orderDirection) => { 
+    if(orderBy === "name" && orderDirection === "Ascendente"){
+        users.sort((primerD,segundoD)=>{
+            if(primerD.name > segundoD.name){
+                return 1;
+            }else if(primerD.name < segundoD.name){
+                return -1;
+            }
+            return 0;
+        })
+    }
+    if(orderBy === "completitud" && orderDirection === "Ascendente"){
+        users.sort((primerD,segundoD)=>{
+            if(primerD.stats.percent > segundoD.stats.percent){
+                return 1;
+            }else if(primerD.stats.percent < segundoD.stats.percent){
+                return -1;
+            }
+            return 0;
+        })
+    }
+    if(orderBy === "Ejercicios" && orderDirection === "Ascendente"){
+        users.sort((primerD,segundoD)=>{
+            if(primerD.stats.exercises.percent > segundoD.stats.exercises.percent){
+                return 1;
+            }else if(primerD.stats.exercises.percente < segundoD.stats.exercises.percent){
+                return -1;
+            }
+            return 0;
+        })
+    }
+    if(orderBy === "Lecturas" && orderDirection === "Ascendente"){
+        users.sort((primerD,segundoD)=>{
+            if(primerD.stats.reads.percent > segundoD.stats.reads.percent){
+                return 1;
+            }else if(primerD.stats.reads.percent < segundoD.stats.reads.percent){
+                return -1;
+            }
+            return 0;
+        })
+    }
+    if(orderBy === "Quizzes" && orderDirection === "Ascendente"){
+        users.sort((primerD,segundoD)=>{
+            if(primerD.stats.quizzes.percent > segundoD.stats.quizzes.percent){
+                return 1;
+            }else if(primerD.stats.quizzes.percent < segundoD.stats.quizzes.percent){
+                return -1;
+            }
+            return 0;
+        })
+    }
+
     
 };
 
@@ -109,6 +159,3 @@ window.filterUsers = (users, search) => {
 
 window.processCohortData = (options) => {
 };
-
-
-
