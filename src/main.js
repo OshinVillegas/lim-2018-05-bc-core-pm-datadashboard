@@ -154,10 +154,8 @@ selectOrderBy.addEventListener("change", () => {
 			})
 		}
 		if (selectOrderBy.value === "lecturas") {
+      				sortUsers(usersWithStats, selectOrderBy.value, "Ascendente");
 			usersWithStats.forEach((user) => {
-
-				sortUsers(usersWithStats, selectOrderBy.value, "Ascendente");
-
 				celda += '<tr id="cuerpoData">' +
 					// '<td id= "nombrestabla"><a href="">' + user.id + '</a></td>'+
 					'<td>' + user.name + '</td>' +
@@ -210,7 +208,7 @@ textUser.addEventListener("keyup", () => {
 				'<td>' + user.stats.quizzes.percent + '</td>' +
 				'</tr>';
 		})
-
 		dataStudents.innerHTML = celda;
 
 })
+

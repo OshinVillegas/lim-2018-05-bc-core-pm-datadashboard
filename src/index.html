@@ -2,34 +2,42 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device−width, initial−scale=1.0" />
+
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="fuentes/font.css" />
   <link rel="stylesheet" href="fuentes/font.css" />
   <link rel="stylesheet" href="iconos/css/lobster.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css" />
 
   <title>Data Dashboard</title>
+
 </head>
 
 <body>
-  <!-- Cabecera -->
-  <header>
+
+  <header class="col-xs-12">
     <img src="imagenes/logo1.png" alt="">
+
   </header>
   <hr>
-  <div id="general">
+  <div id="general" class="col-xs-12">
+
     <section id="menuD">
       <img src="imagenes/logo.jpg" alt="">
       <p>Analytics</p>
       <button id="dashB">
         <img src="imagenes/icono2.png" alt=""> Dashboard
       </button>
+      <br>
       <button id="curso">
-        <img src="imagenes/icono1.png" alt=""> Courses
+        <img src="imagenes/icono1.png" alt="">  Courses
       </button>
     </section>
-    <div id="vl"></div>
+    <div id="vl" class="col-xs-4"></div>
+
     <section id="contenido">
       <p> Traning Centers </p>
       <div id="primeraFila" class="sectionFilas">
@@ -51,6 +59,7 @@
       <button>
         <i class="icon-fast-fw"></i>
       </button>
+
       <p>Selecciona tu cohort: </p>
       <select id="trainingCenters">
 
@@ -91,6 +100,7 @@
     <script src="data.js"></script>
     <script src="main.js"></script>
   </div>
+
 </body>
 
 </html>

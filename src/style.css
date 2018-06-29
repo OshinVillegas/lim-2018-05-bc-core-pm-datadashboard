@@ -1,31 +1,39 @@
-@import url(https://fonts.googleapis.com/css?family=Ubuntu:400,700);
-
 body{
     margin: 0;
     padding: 0;
+    background: #ffe521;
 
 }
 header{
-    padding: 0px;
+    padding: 5px;
     background-color: #000000;
 }
+#select{
+    font-family: "Bitter";
+    color : black;
+}
 img{
-    width: 140px;
-    height: 40px;
+    width: 200px;
+    height: 50px;
     margin: 5px 20px;
 }
 hr{
     margin: 0;
     padding: 0;
 }
+/* cntenido */
 #general{
-    font-family: "Kavivanar-Regular";
+    font-family: "Bitter";
     padding: 0%;
     margin: 0%;
 }
+/* menuIzquierdo */
 #menuD{
     display: inline-block;
+    padding: 30px;
+    right: 10px;    
 }
+
 #menuD img{
     width: 150px;
     height: 150px;
@@ -34,17 +42,20 @@ hr{
 #menuD p{
     text-align: center;
     font-size: 30px;
+    color: #000000;
+    font-family: "Bitter";
 }
 #dashB { 
     display: block;
     padding: 10px 35px;
-    margin: 0 28px;
+    margin-bottom: 10px;
+    margin-top: 40px;
     text-align: center;
     background: #ffffff;
-    border-width: 0;
-    box-sizing: border-box;
+    border-radius: 5%;
     transition: all 500ms ease;
-    font-family:"Raleway-Regular";
+    font-family:"Bitter";
+
 }
 #dashB img{
     display: block;
@@ -53,20 +64,22 @@ hr{
     margin: 0 15px;
 }
 #dashB:hover { 
-    background:#999999;
+    background:#FF009E;
     color: #ffffff;
-    box-shadow: inset 0 0 0 3px #999999;
+    box-shadow: inset 0 0 0 3px #FF009E;
 }
 #curso{ 
     display: block;
-    padding: 10px 36px;
-    margin: 0 28px;
+    padding: 10px 39px;
+    margin-bottom: 20px;
+    margin-top: 5px;
     text-align: center;
     background: #ffffff;
-    border-width: 0;
-    box-sizing: border-box;
+    border-radius: 5%;
     transition: all 500ms ease;
-    font-family:"Raleway-Regular";
+    font-family:"Bitter";
+    position: center;
+
 }
 #curso img{
     display: block;
@@ -75,19 +88,21 @@ hr{
     margin: 0 15px;
 }
 #curso:hover { 
-    background:#999999;
+    background:#FF009E;
     color: #ffffff;
-    box-shadow: inset 0 0 0 3px #999999;
+    box-shadow: inset 0 0 0 3px #FF009E;
 }
+/* division */
 #vl{
-    border-left: 1px solid #d9d9d9;
+    border-left: 1px solid #000000;
     position: absolute;
     display: inline-block;
-    left: 15%;
+    left: 13%;
     height: 450px;
     top : 0;
     margin: 122px 0;
 }
+/* contenidDerecho */
 #contenido{
     left: 16%;
     position: absolute;
@@ -97,7 +112,9 @@ hr{
 }
 #contenido p{
     text-align: center;
-    font-size: 30px;
+    font-size: 50px;
+    color: #000000;
+    font-family: "Bitter";
 }
 .sectionFilas {
     border-width: 0;
@@ -110,8 +127,15 @@ hr{
     width: 40%;
     font-size: 30px;
     padding: 20px 0;
-    background: #e6e6e6;
-    font-family:"Raleway-Regular";
+    background:#E64C65;
+    font-family:"Bitter";
+    border-radius:10px;
+    color: white;
+}
+.centers:hover { 
+    background:#FF009E;
+    color: #ffffff;
+    box-shadow: inset 0 0 0 3px #FF009E;
 }
 #selectCenters{
     position: absolute;
@@ -119,13 +143,14 @@ hr{
     left: 16%;
     width: 83%;
     height: 500px;
+    
 }
 #selectCenters p {
     position: absolute;
     left: 16%;
     width: 83%;
     height: 500px;
-    font-family:"Raleway-Regular";
+    font-family:"Bitter";
     font-size: 30px;
 }
 #selectCenters select{
@@ -133,7 +158,7 @@ hr{
     top:95px;
     left: 16%;
     font-size: 20px;
-    font-family:"Raleway-Regular";
+    font-family:"Bitter";
 }
 #contenidoData{
     position: absolute;
@@ -142,17 +167,11 @@ hr{
     width: 83%;
     height: 500px;
 }
-#graphicsTotal{
-    background:  #d9d9d9;
-    margin: 20px 0 ;
-    width:100%;
-
-}
 #chooseFilter{
     display: block;
     margin:10px 0 5px 0;
     border-width: 0;
-    font-family:"Raleway-Regular";
+    font-family:"Bitter";
     font-size: 15px;
  }
 #filtros{
@@ -165,7 +184,7 @@ hr{
     width: 30%;
     font-size: 20px;
     padding: 10px 0;
-    font-family:"Raleway-Regular";
+    font-family:"Bitter";
 }
 #contenidoFiltros{
     position: absolute;
@@ -183,6 +202,8 @@ hr{
 #buscador p{
     display: inline-block;
     margin: 0 2px 0 0; 
+    padding: 8%;
+    
 }
 #buscador input{
     border-radius: 5px;
@@ -215,27 +236,25 @@ hr{
     text-decoration: none;
     font-size: 20px;
     display: block;
-    font-family:"Raleway-Regular";
+    font-family:"Bitter";
     color: #000000;
 }
 
 
 #cabecera{
     text-align: center;
-    background-color: rgb(8, 8, 8);
+    background: #FF009E;
     padding: 15px 0;
 
 }
 #cabecera th{
+    font-family: "Bitter";
     padding: 8px 0;
     font-size: 20px;
-    border: 1px solid black;
-    color: white;
-    margin: 0;
-}
-#tablaUsers{
-    width: 100%;
-    border: 1px solid black;
+    border: 1px ;
+    color:#000000;
+
+   
 }
 #cuerpoData{
     text-align: center;
@@ -247,3 +266,4 @@ hr{
     border: 1px solid black;
     margin: 0;
 }
+
