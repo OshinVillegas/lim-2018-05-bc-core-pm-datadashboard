@@ -6,11 +6,8 @@ const dataStudents = document.getElementById("tablaUsers");
 const cohortsSelect = document.getElementById("trainingCenters");
 const selectOrderBy = document.getElementById("filtroPorOrderBy");
 const selectDirection = document.getElementById("filtroPorDirection");
-const searchUser = document.getElementById("search");
 const textUser = document.getElementById("textU");
-const tr = dataStudents.getElementsByTagName("thead");
 
-// // Eventos del dom
 let options = {
 	cohort: '',
 	cohortData: {
@@ -27,7 +24,7 @@ const procesandoData = ((users, progress, cohorts) => {
 	options.cohortData.progress = progress;
 	options.orderBy = "name";
 	options.orderDirection = "Ascendente";
-	options.search = "";
+	options.search = "as";
 	return processCohortData(options);
 })
 const getAllData = (cb) => {
@@ -39,16 +36,15 @@ const getAllData = (cb) => {
 						.then(function (responseP) {
 							Promise.all([responseC.json(), responseU.json(), responseP.json()])
 								.then(data => {
-									// console.log(data);
 									const [cohorts, users, progress] = data;
 									cb(cohorts, users, progress);
-									console.log(data);
-
 								})
 						})
 				})
 		})
 }
+// Eventos del dom
+
 btnLima.addEventListener("click", () => {
 	fetch('../data/cohorts.json').then(function (response) {
 		return response.json();
@@ -70,7 +66,6 @@ cohortsSelect.addEventListener("change", (e) => {
 
 	if (e.target.value === "lim-2018-03-pre-core-pw") {
 		getAllData((cohorts, users, progress) => {
-			console.log(cohorts)
 			let celda = '';
 			celda += '<tr id="cabecera">' +
 				'<th> NAME </th>' +
@@ -83,7 +78,6 @@ cohortsSelect.addEventListener("change", (e) => {
 			procesandoData(users, progress, filteredCohorts[0]);
 			
 			let usersWithStats = processCohortData(options);
-			console.log(usersWithStats);
 			usersWithStats.forEach((user) => {
 				celda += '<tr id="cuerpoData">' +
 					'<td>' + user.name + '</td>' +
@@ -109,7 +103,7 @@ btndashB.addEventListener("click", () => {
 
 })
 selectOrderBy.addEventListener("change", () => {
-	getAllData((cohorts, users, progress) => {
+
 		let celda = '';
 		celda += '<tr id="cabecera">' +
 			'<th> NAME </th>' +
@@ -190,14 +184,10 @@ selectOrderBy.addEventListener("change", () => {
 
 		dataStudents.innerHTML = celda;
 
-	})
 	
 })
-// selectDirection.addEventListener("change", () => {
-// })
-searchUser.addEventListener("click", () => {
+textUser.addEventListener("keyup", () => {
 
-	getAllData((cohorts, users, progress) => {
 		let celda = '';
 		celda += '<tr id="cabecera">' +
 			'<th> NAME </th>' +
@@ -206,25 +196,21 @@ searchUser.addEventListener("click", () => {
 			'<th> LECTURAS </th>' +
 			'<th> QUIZZES </th>' +
 			'</tr>'
-
-		options.search = textUser.value;
-		procesandoData(options);
-		filteredCohorts = cohorts.filter(item => { return item.coursesIndex === e.target.value });
-		let usersWithStats = procesandoData(users, progress, filteredCohorts[0]);
+			let contenidos=textUser.value;
+			options.search = contenidos;
+			let usersWithStats = processCohortData(options)
 		usersWithStats.forEach((user) => {
 
-			celda += '<tr name="thead">' +
+			celda += '<tr id="cuerpoData">' +
 				// '<td id= "nombrestabla"><a href="">' + user.id + '</a></td>'+
-				'<td name="tbody">' + user.name + '</td>' +
-				'<td name="tbody">' + user.stats.percent + '</td>' +
-				'<td name="tbody">' + user.stats.exercises.percent + '</td>' +
-				'<td name="tbody">' + user.stats.reads.percent + '</td>' +
-				'<td name="tbody">' + user.stats.quizzes.percent + '</td>' +
+				'<td>' + user.name + '</td>' +
+				'<td>' + user.stats.percent + '</td>' +
+				'<td>' + user.stats.exercises.percent + '</td>' +
+				'<td>' + user.stats.reads.percent + '</td>' +
+				'<td>' + user.stats.quizzes.percent + '</td>' +
 				'</tr>';
 		})
 
 		dataStudents.innerHTML = celda;
-		document.getElementById('contenidoData').style.display = "none";
-		document.getElementById('contenidoFiltros').style.display = "block";
-	})
+
 })

@@ -132,14 +132,19 @@ window.sortUsers = (users, orderBy, orderDirection) => {
     return users;
 };
 window.filterUsers = (users, search) => {
-  users.filter((user)=>{
+  return users.filter((user)=>{
         return user.name.toLowerCase().indexOf(search.toLowerCase()) > -1;
 })
 }
 window.processCohortData = (options) => {
   let arrC= Object.keys(options.cohort.coursesIndex);
-  let computeUsere=computeUsersStats(options.cohortData.users,options.cohortData.progress,arrC);
-  let sortUserWithCompute =sortUsers(computeUsere,options.orderBy,options.orderDirection);
+  let computeUser=computeUsersStats(options.cohortData.users,options.cohortData.progress,arrC);
+  let sortUserWithCompute =sortUsers(computeUser,options.orderBy,options.orderDirection);
+if(options.search !== " "){
+    let filterUsersWithSort=filterUsers(computeUser,options.search);
+    return filterUsersWithSort
+
+}
   return sortUserWithCompute;
-  
+
 };

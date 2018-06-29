@@ -14,84 +14,83 @@
 
 <body>
   <!-- Cabecera -->
- <header>
-   <img src="imagenes/logo1.png" alt="">
- </header>
- <hr>
- <div id="general">
-   <section id="menuD">
-     <img src="imagenes/logo.jpg" alt="">
-     <p>Analytics</p>
-     <button id="dashB">
-      <img src="imagenes/icono2.png" alt="">
-      Dashboard
+  <header>
+    <img src="imagenes/logo1.png" alt="">
+  </header>
+  <hr>
+  <div id="general">
+    <section id="menuD">
+      <img src="imagenes/logo.jpg" alt="">
+      <p>Analytics</p>
+      <button id="dashB">
+        <img src="imagenes/icono2.png" alt=""> Dashboard
       </button>
-     <button id="curso">
-        <img src="imagenes/icono1.png" alt="">
-       Courses
+      <button id="curso">
+        <img src="imagenes/icono1.png" alt=""> Courses
       </button>
-   </section>
-   <div id="vl"></div>
-   <section id="contenido">
-     <p> Traning Centers </p>
-     <div id="primeraFila" class="sectionFilas">
+    </section>
+    <div id="vl"></div>
+    <section id="contenido">
+      <p> Traning Centers </p>
+      <div id="primeraFila" class="sectionFilas">
         <button id="cLima" class="centers">Lima</button>
         <button id="cSantiago" class="centers">Santiago</button>
-     </div>
-     <div id="segundaFila" class="sectionFilas">
+      </div>
+      <div id="segundaFila" class="sectionFilas">
         <button id="cGuada" class="centers">Guadalajara</button>
         <button id="cMexico" class="centers">Ciudad de Mexico</button>
-     </div>
-     <div id="terceraFila" class="sectionFilas">
+      </div>
+      <div id="terceraFila" class="sectionFilas">
         <button id="cSaoPa" class="centers">Sao Paolo</button>
-     </div>
-   </section>
-   <div id="selectCenters" style="display: none;">
-     <button>
-       <i class="icon-fast-bw"></i>
-     </button>
-     <button>
-      <i class="icon-fast-fw"></i>
-    </button>
-     <p>Selecciona tu cohort: </p>
-    <select id="trainingCenters">
+      </div>
+    </section>
+    <div id="selectCenters" style="display: none;">
+      <button>
+        <i class="icon-fast-bw"></i>
+      </button>
+      <button>
+        <i class="icon-fast-fw"></i>
+      </button>
+      <p>Selecciona tu cohort: </p>
+      <select id="trainingCenters">
 
-    </select>
-   </div>
-   <div id="contenidoData" style="display: none">
-    <div class="container">
-      <div id="contenidoFiltros">
-        <div id="buscador">
-         <p>Buscar: </p> <input type="text" placeholder="Search" id="textU">
-         <button id="search">Search</button>
-         <section id="filtrosOrder">
-          <select id="filtroPorOrderBy">
-            <option value="-">Seleccionar ...</option>
-            <option value="name">Nombre</option>
-            <option value="completitud">Completitud</option>
-            <option value="ejercicios">Excercises</option>
-            <option value="lecturas">Lecturas</option>
-            <option value="quizzes">Quizzes</option>
-            <option value="-">Quizzes-Score</option>
-          </select>
-          <select id="filtroPorDirection" disabled>
-            <option value="-">Seleccionar ...</option>
-            <option value="Ascendente">Ascendente</option>
-            <option value="Descendente">Descendente</option>
-          </select>
-        </section>
+      </select>
+    </div>
+    <div id="contenidoData" style="display: none">
+      <div class="container">
+        <div id="contenidoFiltros">
+          <div id="buscador">
+            <p>Buscar: </p>
+            <input type="text" placeholder="Search" id="textU">
+            <button id="search">Search</button>
+            <section id="filtrosOrder">
+              <select id="filtroPorOrderBy">
+                <option value="-">Seleccionar ...</option>
+                <option value="name">Nombre</option>
+                <option value="completitud">Completitud</option>
+                <option value="ejercicios">Excercises</option>
+                <option value="lecturas">Lecturas</option>
+                <option value="quizzes">Quizzes</option>
+                <option value="-">Quizzes-Score</option>
+              </select>
+              <select id="filtroPorDirection" disabled>
+                <option value="-">Seleccionar ...</option>
+                <option value="Ascendente">Ascendente</option>
+                <option value="Descendente">Descendente</option>
+              </select>
+            </section>
+          </div>
+          <div id="listStudents">
+            <table id="tablaUsers"></table>
+          </div>
+          <div id="listQuizzes">
+          </div>
         </div>
-        <div id = "listStudents">
-          <table id="tablaUsers"></table>
-        </div>
-        <div id = "listQuizzes">
-        </div>
-     </div>   
-   </div>
-   
- </div>
-  <script src="data.js"></script>
-  <script src="main.js"></script>
- 
+      </div>
+    </div>
+    <script src="data.js"></script>
+    <script src="main.js"></script>
+  </div>
 </body>
+
 </html>
