@@ -24,7 +24,7 @@ const procesandoData = ((users, progress, cohorts) => {
 	options.cohortData.progress = progress;
 	options.orderBy = "name";
 	options.orderDirection = "Ascendente";
-	options.search = "as";
+	options.search = "";
 	return processCohortData(options);
 })
 const getAllData = (cb) => {
@@ -76,7 +76,6 @@ cohortsSelect.addEventListener("change", (e) => {
 				'</tr>'
 			filteredCohorts = cohorts.filter(item => { return item.id === e.target.value });
 			procesandoData(users, progress, filteredCohorts[0]);
-			
 			let usersWithStats = processCohortData(options);
 			usersWithStats.forEach((user) => {
 				celda += '<tr id="cuerpoData">' +
@@ -93,6 +92,7 @@ cohortsSelect.addEventListener("change", (e) => {
 		document.getElementById('contenidoData').style.display = "block";
 		// cargarDatosProgress();
 	}
+
 });
 btndashB.addEventListener("click", () => {
 
