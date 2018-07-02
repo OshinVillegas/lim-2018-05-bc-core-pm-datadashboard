@@ -161,7 +161,7 @@ detalles:
 
 #### 2) Sketch de la solución (prototipo de baja fidelidad)
 
-![Sin titulo](http://subirimagen.me/uploads/20180702155407.jpg) 
+![Sin titulo](https://drive.google.com/drive/u/0/folders/1vJOyXisBnxizZDHzCJdUTjKEd1O7iMRK) 
 
 
 #### 3) Diseño de la Interfaz de Usuario (prototipo de alta fidelidad)
