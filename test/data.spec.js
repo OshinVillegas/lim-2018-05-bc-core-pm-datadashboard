@@ -179,17 +179,56 @@ describe('data', () => {
   });
 
   describe('filterUsers(users, filterBy)', () => {
-    const usersWithStats = fixtures.users;
-
+    const usersilter = fixtures.users;
     it('debería retornar nuevo arreglo solo con usuarios con nombres que contengan string (case insensitive)',()=>{
-      assert.deepEqual(filterUsers(usersWithStats,"vanessa"),"11")
-    });
-
+      const search = 'Vanessa';
+      const FilterUsers =  usersilter.filter((user) => {
+        return user.name.toLowerCase().indexOf(search.toLowerCase()) > -1;
+      })
+    const processed= filterUsers(usersilter,search);
+    assert.deepEqual(FilterUsers,processed)
+  });
   });
 
   describe('processCohortData({ cohortData, orderBy, orderDirection, filterBy })', () => {
+    const cohort = fixtures.cohorts.find(item => item.id === 'lim-2018-03-pre-core-pw');
+    const courses = Object.keys(cohort.coursesIndex);
+    const { users, progress } = fixtures;
+    it('debería retornar arreglo de usuarios con propiedad stats y aplicar sort y filter',()=>{
+      const options = {
+        cohort: courses,
+        cohortData: {
+          users: users,
+          progress: progress
+        },
+        orderBy: 'name',
+        orderDirection: 'Ascendente',
+        search: 'Vanessa'
+      }
+      const processed = processCohortData(options);
+      users.forEach(user => {
+        assert.ok(user.hasOwnProperty('stats'));
+      });
+  
+      const userName = users.sort((primerD, segundoD) => {
+        if (primerD.name > segundoD.name) {
+          return 1;
+        } else if (primerD.name < segundoD.name) {
+          return -1;
+        }
+        return 0;
+      })
 
-    it('debería retornar arreglo de usuarios con propiedad stats y aplicar sort y filter');
+      assert.deepEqual(userName, processed);
+
+      const search = 'Vanessa';
+      const FilterUsers =  users.filter((user) => {
+        return user.name.toLowerCase().indexOf(search.toLowerCase()) > -1;
+      })
+    
+    assert.deepEqual(FilterUsers,processed)
+    });
+    
 
   });
 
