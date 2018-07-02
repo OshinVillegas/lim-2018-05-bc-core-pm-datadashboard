@@ -161,8 +161,8 @@ detalles:
 
 #### 2) Sketch de la solución (prototipo de baja fidelidad)
 
-Debes hacer un _sketch_ (boceto) de tu solución usando papel y lápiz, tomarle
-una foto, subirla a tu repositorio y hacer mención del _sketch_ en tu `README.md`.
+![Sin titulo](http://subirimagen.me/uploads/20180702155407.jpg) 
+
 
 #### 3) Diseño de la Interfaz de Usuario (prototipo de alta fidelidad)
 
