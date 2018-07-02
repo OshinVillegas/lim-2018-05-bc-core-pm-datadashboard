@@ -161,8 +161,8 @@ detalles:
 
 #### 2) Sketch de la solución (prototipo de baja fidelidad)
 
-![Sin titulo](https://drive.google.com/open?id=1j-rERL-nxhL-z50UvNL50wIEixmeR3qQ) 
-
+![img_20180702_140217042](https://user-images.githubusercontent.com/21071476/42186191-43f7e844-7e11-11e8-94a7-ddfeda2e61cb.jpg)
+![img_20180702_140211864](https://user-images.githubusercontent.com/21071476/42186192-4436c168-7e11-11e8-8512-952637a73e63.jpg)
 
 #### 3) Diseño de la Interfaz de Usuario (prototipo de alta fidelidad)
 
