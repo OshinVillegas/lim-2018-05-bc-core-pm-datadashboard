@@ -1,41 +1,31 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-  <meta name="viewport" content="width=device−width, initial−scale=1.0" />
+  <meta name="viewport" content="width=1200px, initial−scale=1.0" />
 
   <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="fuentes/font.css" />
-  <link rel="stylesheet" href="fuentes/font.css" />
-  <link rel="stylesheet" href="iconos/css/lobster.css" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="style.css" />
-
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximun-scale=1.0, minimun-scale=1.0">
   <title>Data Dashboard</title>
-
 </head>
 
 <body>
-
-  <header class="col-xs-12">
+<div id="padre">
+  <header >
     <img src="imagenes/logo1.png" alt="">
-
   </header>
   <hr>
-  <div id="general" class="col-xs-12">
-
+  <div id="general">
+    <div id= "menuIZ">
     <section id="menuD">
-      <img src="imagenes/logo.jpg" alt="">
-      <p>Analytics</p>
+      <img src="imagenes/rosa.png" alt="">
       <button id="dashB">
         <img src="imagenes/icono2.png" alt=""> Dashboard
       </button>
-      <br>
-      <button id="curso">
-        <img src="imagenes/icono1.png" alt="">  Courses
-      </button>
     </section>
+    </div>
+    
     <div id="vl" class="col-xs-4"></div>
 
     <section id="contenido">
@@ -53,13 +43,6 @@
       </div>
     </section>
     <div id="selectCenters" style="display: none;">
-      <button>
-        <i class="icon-fast-bw"></i>
-      </button>
-      <button>
-        <i class="icon-fast-fw"></i>
-      </button>
-
       <p>Selecciona tu cohort: </p>
       <select id="trainingCenters">
 
@@ -97,10 +80,9 @@
         </div>
       </div>
     </div>
-    <script src="data.js"></script>
-    <script src="main.js"></script>
-  </div>
-
+   <script src="data.js"></script>
+</div >
 </body>
-
+   <script src="main.js"></script>
+  </div>
 </html>
