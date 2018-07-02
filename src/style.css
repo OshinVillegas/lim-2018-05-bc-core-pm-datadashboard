@@ -101,7 +101,7 @@ margin: 10px;
     font-size: 50px;
     color: #000000;
     font-family: "Bitter";
-    width: 80;
+    width: 80vw;
 }
 .sectionFilas {
     border-width: 0;
@@ -154,7 +154,7 @@ margin: 10px;
     position: absolute;
     top:65px;
     left: 16%;
-    width: 83%;
+    width: 80%;
     height: 500px;
 }
 #filtroPorOrderBy{
@@ -187,6 +187,7 @@ margin: 10px;
     width: 83%;
     height: 500px;
 }
+
 #buscador{
    border-radius: 5px;
     margin: -80px;
