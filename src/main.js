@@ -79,7 +79,7 @@ cohortsSelect.addEventListener("change", (e) => {
 			let usersWithStats = processCohortData(options);
 			usersWithStats.forEach((user) => {
 				celda += '<tr id="cuerpoData">' +
-					'<td>' + user.name + '</td>' +
+					'<td>' + user.name.toUpperCase() + '</td>' +
 					'<td>' + user.stats.percent + '</td>' +
 					'<td>' + user.stats.exercises.percent + '</td>' +
 					'<td>' + user.stats.reads.percent + '</td>' +
@@ -120,7 +120,7 @@ selectOrderBy.addEventListener("change", () => {
 			usersWithStats.forEach((user) => {
 				celda += '<tr id="cuerpoData">' +
 					// '<td id= "nombrestabla"><a href="">' + user.id + '</a></td>'+
-					'<td>' + user.name + '</td>' +
+					'<td>' + user.name.toUpperCase() + '</td>' +
 					'<td>' + user.stats.percent + '</td>' +
 					'<td>' + user.stats.exercises.percent + '</td>' +
 					'<td>' + user.stats.reads.percent + '</td>' +
@@ -132,7 +132,7 @@ selectOrderBy.addEventListener("change", () => {
 			usersWithStats.forEach((user) => {
 				celda += '<tr id="cuerpoData">' +
 					// '<td id= "nombrestabla"><a href="">' + user.id + '</a></td>'+
-					'<td>' + user.name + '</td>' +
+					'<td>' + user.name.toUpperCase() + '</td>' +
 					'<td>' + user.stats.percent + '</td>' +
 					'<td>' + user.stats.exercises.percent + '</td>' +
 					'<td>' + user.stats.reads.percent + '</td>' +
@@ -145,7 +145,7 @@ selectOrderBy.addEventListener("change", () => {
 				sortUsers(usersWithStats, selectOrderBy.value, "Ascendente");
 				celda += '<tr id="cuerpoData">' +
 					// '<td id= "nombrestabla"><a href="">' + user.id + '</a></td>'+
-					'<td>' + user.name + '</td>' +
+					'<td>' + user.name.toUpperCase() + '</td>' +
 					'<td>' + user.stats.percent + '</td>' +
 					'<td>' + user.stats.exercises.percent + '</td>' +
 					'<td>' + user.stats.reads.percent + '</td>' +
@@ -154,11 +154,10 @@ selectOrderBy.addEventListener("change", () => {
 			})
 		}
 		if (selectOrderBy.value === "lecturas") {
-      				sortUsers(usersWithStats, selectOrderBy.value, "Ascendente");
 			usersWithStats.forEach((user) => {
 				celda += '<tr id="cuerpoData">' +
 					// '<td id= "nombrestabla"><a href="">' + user.id + '</a></td>'+
-					'<td>' + user.name + '</td>' +
+					'<td>' + user.name.toUpperCase() + '</td>' +
 					'<td>' + user.stats.percent + '</td>' +
 					'<td>' + user.stats.exercises.percent + '</td>' +
 					'<td>' + user.stats.reads.percent + '</td>' +
@@ -168,10 +167,9 @@ selectOrderBy.addEventListener("change", () => {
 		}
 		if (selectOrderBy.value === "quizzes") {
 			usersWithStats.forEach((user) => {
-				sortUsers(usersWithStats, selectOrderBy.value, "Ascendente");
 				celda += '<tr id="cuerpoData">' +
 					// '<td id= "nombrestabla"><a href="">' + user.id + '</a></td>'+
-					'<td>' + user.name + '</td>' +
+					'<td>' + user.name.toUpperCase() + '</td>' +
 					'<td>' + user.stats.percent + '</td>' +
 					'<td>' + user.stats.exercises.percent + '</td>' +
 					'<td>' + user.stats.reads.percent + '</td>' +
@@ -181,8 +179,51 @@ selectOrderBy.addEventListener("change", () => {
 		}
 
 		dataStudents.innerHTML = celda;
-
+		selectDirection.disabled=false;
 	
+})
+selectDirection.addEventListener("change", () => {
+
+	let celda = '';
+	celda += '<tr id="cabecera">' +
+		'<th> NAME </th>' +
+		'<th> COMPLETITUD </th>' +
+		'<th> EJERCICIO </th>' +
+		'<th> LECTURAS </th>' +
+		'<th> QUIZZES </th>' +
+		'</tr>'
+		let contenido=selectDirection.value;
+		options.orderDirection = contenido;
+		// console.log(contenido)
+		let usersWithStats = processCohortData(options)
+	if (selectDirection.value === "Ascendente") {
+		usersWithStats.forEach((user) => {
+			celda += '<tr id="cuerpoData">' +
+				// '<td id= "nombrestabla"><a href="">' + user.id + '</a></td>'+
+				'<td>' + user.name.toUpperCase() + '</td>' +
+				'<td>' + user.stats.percent + '</td>' +
+				'<td>' + user.stats.exercises.percent + '</td>' +
+				'<td>' + user.stats.reads.percent + '</td>' +
+				'<td>' + user.stats.quizzes.percent + '</td>' +
+				'</tr>';
+		})
+	}
+	if (selectDirection.value === "Descendente") {
+		usersWithStats.forEach((user) => {
+			celda += '<tr id="cuerpoData">' +
+				// '<td id= "nombrestabla"><a href="">' + user.id + '</a></td>'+
+				'<td>' + user.name.toUpperCase() + '</td>' +
+				'<td>' + user.stats.percent + '</td>' +
+				'<td>' + user.stats.exercises.percent + '</td>' +
+				'<td>' + user.stats.reads.percent + '</td>' +
+				'<td>' + user.stats.quizzes.percent + '</td>' +
+				'</tr>';
+		})
+	}
+
+	dataStudents.innerHTML = celda;
+
+
 })
 textUser.addEventListener("keyup", () => {
 

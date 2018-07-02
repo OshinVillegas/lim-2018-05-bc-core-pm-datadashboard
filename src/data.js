@@ -128,23 +128,48 @@ window.sortUsers = (users, orderBy, orderDirection) => {
       }
       return 0;
     })
+  }else  if (orderBy === "name" && orderDirection === "Descendente") {
+    users.sort((primerD, segundoD) => {
+      if (primerD.name < segundoD.name) {
+        return 1;
+      } else if (primerD.name > segundoD.name) {
+        return -1;
+      }
+      return 0;
+    })
   }
   if (orderBy === "completitud" && orderDirection === "Ascendente") {
     users.sort((primerD, segundoD) => {
       return (primerD.stats.percent - segundoD.stats.percent);
+    })
+  }else  if (orderBy === "completitud" && orderDirection === "Descendente") {
+    users.sort((primerD, segundoD) => {
+      return (segundoD.stats.percent - primerD.stats.percent);
     })
   }
   if (orderBy === "ejercicios" && orderDirection === "Ascendente") {
     users.sort((primerD, segundoD) => {
       return (primerD.stats.exercises.percent - segundoD.stats.exercises.percent);
     })
+  }else  if (orderBy === "ejercicios" && orderDirection === "Descendente") {
+    users.sort((primerD, segundoD) => {
+      return (segundoD.stats.exercises.percent - primerD.stats.exercises.percent);
+    })
   }
   if (orderBy === "lecturas" && orderDirection === "Ascendente") {
     users.sort((primerD, segundoD) => {
       return (primerD.stats.reads.percent - segundoD.stats.reads.percent);
     })
+  }else  if (orderBy === "lecturas" && orderDirection === "Descendente") {
+    users.sort((primerD, segundoD) => {
+      return (segundoD.stats.reads.percent - primerD.stats.reads.percent);
+    })
   }
   if (orderBy === "quizzes" && orderDirection === "Ascendente") {
+    users.sort((primerD, segundoD) => {
+      return (primerD.stats.quizzes.percent - segundoD.stats.quizzes.percent);
+    })
+  }else if (orderBy === "quizzes" && orderDirection === "Descendente") {
     users.sort((primerD, segundoD) => {
       return (primerD.stats.quizzes.percent - segundoD.stats.quizzes.percent);
     })
