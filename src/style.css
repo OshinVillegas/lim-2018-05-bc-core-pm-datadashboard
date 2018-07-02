@@ -93,7 +93,7 @@ margin: 10px;
     left: 16%;
     position: absolute;
     display: inline-block;
-    width: 100%;
+    width: 100vw;
     top:65px;
 }
 #contenido p{
@@ -119,7 +119,7 @@ margin: 10px;
     font-family:"Bitter";
     border-radius:10px;
     color: white;
-    width: 30%;
+    width: 30vw;
 }
 .centers:hover { 
     background:#FF009E;
@@ -130,14 +130,14 @@ margin: 10px;
     position: absolute;
     top:105px;
     left: 16%;
-    width: 83%;
+    width: 83vw;
     height: 500px;
     
 }
 #selectCenters p {
     position: absolute;
     left: 16%;
-    width: 83%;
+    width: 83vw;
     height: 500px;
     font-family:"Bitter";
     font-size: 30px;
@@ -148,6 +148,7 @@ margin: 10px;
     left: 16%;
     font-size: 20px;
     font-family:"Bitter";
+    width: 50vw;
 }
 #contenidoData{
     position: absolute;
@@ -191,7 +192,15 @@ margin: 10px;
     margin: -80px;
     padding-left: 600px;
 }
-
+#tablaUsers{
+    width: 50vw;
+}
+#textU{
+    width: 15vw;
+}
+filtroPorOrderBy{
+width: 15vw;
+}
 #buscador p{
     display: inline-block;
     margin: 0 2px 0 0; 
