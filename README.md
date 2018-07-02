@@ -26,7 +26,7 @@ _ver_ y _usar_ la data de progreso del LMS. Para ello, proponemos crear un
 
 ## Introducción
 
-Según un [estudio de IBM](https://www-01.ibm.com/common/ssi/cgi-bin/ssialias?htmlfid=WRL12345USEN),
+Según un [estudio de IBM](https://drive.google.com/file/d/14FkAh8fnmdjQnnFp9uuomDXRxXQ-27w3/view?usp=sharing),
 el 90% de la data que existe hoy ha sido creada en los últimos dos años.
 Cada día generamos 2.5 trillones de bytes de datos, una cifra sin precedentes.
 
@@ -160,9 +160,9 @@ detalles:
 * Cómo fue tu proceso de diseño.
 
 #### 2) Sketch de la solución (prototipo de baja fidelidad)
-
-Debes hacer un _sketch_ (boceto) de tu solución usando papel y lápiz, tomarle
-una foto, subirla a tu repositorio y hacer mención del _sketch_ en tu `README.md`.
+![Primer Modelo ](https://drive.google.com/file/d/1dLctakeQQeUf6kpE259xCHXPiv_uwrnA/view?usp=sharing)
+![2](https://drive.google.com/file/d/1IoqC1ss3icFS1kBpAolB7CuXQaBHNh7q/view?usp=sharing)
+![3](https://drive.google.com/file/d/14FkAh8fnmdjQnnFp9uuomDXRxXQ-27w3/view?usp=sharing)
 
 #### 3) Diseño de la Interfaz de Usuario (prototipo de alta fidelidad)
 
