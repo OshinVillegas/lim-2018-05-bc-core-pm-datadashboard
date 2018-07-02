@@ -160,9 +160,9 @@ detalles:
 * Cómo fue tu proceso de diseño.
 
 #### 2) Sketch de la solución (prototipo de baja fidelidad)
-![1](imagenes/read1.png)
-![2](imagenes/read2.png)
-![3](imagenes/read3.png)
+![Primer Modelo ](https://drive.google.com/file/d/1dLctakeQQeUf6kpE259xCHXPiv_uwrnA/view?usp=sharing)
+![2](https://drive.google.com/file/d/1IoqC1ss3icFS1kBpAolB7CuXQaBHNh7q/view?usp=sharing)
+![3](https://drive.google.com/file/d/14FkAh8fnmdjQnnFp9uuomDXRxXQ-27w3/view?usp=sharing)
 
 #### 3) Diseño de la Interfaz de Usuario (prototipo de alta fidelidad)
 
