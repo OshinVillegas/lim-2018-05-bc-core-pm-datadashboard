@@ -73,6 +73,7 @@ cohortsSelect.addEventListener("change", (e) => {
 				'<th> EJERCICIO </th>' +
 				'<th> LECTURAS </th>' +
 				'<th> QUIZZES </th>' +
+				'<th> QUIZZESSCORE </th>' +
 				'</tr>'
 			filteredCohorts = cohorts.filter(item => { return item.id === e.target.value });
 			procesandoData(users, progress, filteredCohorts[0]);
@@ -84,6 +85,7 @@ cohortsSelect.addEventListener("change", (e) => {
 					'<td>' + user.stats.exercises.percent + '</td>' +
 					'<td>' + user.stats.reads.percent + '</td>' +
 					'<td>' + user.stats.quizzes.percent + '</td>' +
+					'<td>' + user.stats.quizzes.scoreAvg + '</td>' +
 					'</tr>';
 			})
 			dataStudents.innerHTML = celda;
@@ -111,6 +113,7 @@ selectOrderBy.addEventListener("change", () => {
 			'<th> EJERCICIO </th>' +
 			'<th> LECTURAS </th>' +
 			'<th> QUIZZES </th>' +
+			'<th> QUIZZESSCORE </th>' +
 			'</tr>'
 			let contenido=selectOrderBy.value;
 			options.orderBy = contenido;
@@ -125,6 +128,8 @@ selectOrderBy.addEventListener("change", () => {
 					'<td>' + user.stats.exercises.percent + '</td>' +
 					'<td>' + user.stats.reads.percent + '</td>' +
 					'<td>' + user.stats.quizzes.percent + '</td>' +
+					'<td>' + user.stats.quizzes.scoreAvg + '</td>' +
+
 					'</tr>';
 			})
 		}
@@ -137,6 +142,8 @@ selectOrderBy.addEventListener("change", () => {
 					'<td>' + user.stats.exercises.percent + '</td>' +
 					'<td>' + user.stats.reads.percent + '</td>' +
 					'<td>' + user.stats.quizzes.percent + '</td>' +
+					'<td>' + user.stats.quizzes.scoreAvg + '</td>' +
+
 					'</tr>';
 			})
 		}
@@ -150,6 +157,8 @@ selectOrderBy.addEventListener("change", () => {
 					'<td>' + user.stats.exercises.percent + '</td>' +
 					'<td>' + user.stats.reads.percent + '</td>' +
 					'<td>' + user.stats.quizzes.percent + '</td>' +
+					'<td>' + user.stats.quizzes.scoreAvg + '</td>' +
+
 					'</tr>';
 			})
 		}
@@ -162,6 +171,8 @@ selectOrderBy.addEventListener("change", () => {
 					'<td>' + user.stats.exercises.percent + '</td>' +
 					'<td>' + user.stats.reads.percent + '</td>' +
 					'<td>' + user.stats.quizzes.percent + '</td>' +
+					'<td>' + user.stats.quizzes.scoreAvg + '</td>' +
+
 					'</tr>';
 			})
 		}
@@ -174,6 +185,20 @@ selectOrderBy.addEventListener("change", () => {
 					'<td>' + user.stats.exercises.percent + '</td>' +
 					'<td>' + user.stats.reads.percent + '</td>' +
 					'<td>' + user.stats.quizzes.percent + '</td>' +
+					'<td>' + user.stats.quizzes.scoreAvg + '</td>' +
+					'</tr>';
+			})
+		}
+		if (selectOrderBy.value === "quizzesScore") {
+			usersWithStats.forEach((user) => {
+				celda += '<tr id="cuerpoData">' +
+					// '<td id= "nombrestabla"><a href="">' + user.id + '</a></td>'+
+					'<td>' + user.name.toUpperCase() + '</td>' +
+					'<td>' + user.stats.percent + '</td>' +
+					'<td>' + user.stats.exercises.percent + '</td>' +
+					'<td>' + user.stats.reads.percent + '</td>' +
+					'<td>' + user.stats.quizzes.percent + '</td>' +
+					'<td>' + user.stats.quizzes.scoreAvg + '</td>' +
 					'</tr>';
 			})
 		}
@@ -191,6 +216,7 @@ selectDirection.addEventListener("change", () => {
 		'<th> EJERCICIO </th>' +
 		'<th> LECTURAS </th>' +
 		'<th> QUIZZES </th>' +
+		'<th> QUIZZESSCORE </th>' +
 		'</tr>'
 		let contenido=selectDirection.value;
 		options.orderDirection = contenido;
@@ -205,6 +231,7 @@ selectDirection.addEventListener("change", () => {
 				'<td>' + user.stats.exercises.percent + '</td>' +
 				'<td>' + user.stats.reads.percent + '</td>' +
 				'<td>' + user.stats.quizzes.percent + '</td>' +
+				'<td>' + user.stats.quizzes.scoreAvg + '</td>' +
 				'</tr>';
 		})
 	}
@@ -217,6 +244,7 @@ selectDirection.addEventListener("change", () => {
 				'<td>' + user.stats.exercises.percent + '</td>' +
 				'<td>' + user.stats.reads.percent + '</td>' +
 				'<td>' + user.stats.quizzes.percent + '</td>' +
+				'<td>' + user.stats.quizzes.scoreAvg + '</td>' +
 				'</tr>';
 		})
 	}
@@ -234,6 +262,7 @@ textUser.addEventListener("keyup", () => {
 			'<th> EJERCICIO </th>' +
 			'<th> LECTURAS </th>' +
 			'<th> QUIZZES </th>' +
+			'<th> QUIZZESSCORE </th>' +
 			'</tr>'
 			let contenidos=textUser.value;
 			options.search = contenidos;
@@ -247,6 +276,7 @@ textUser.addEventListener("keyup", () => {
 				'<td>' + user.stats.exercises.percent + '</td>' +
 				'<td>' + user.stats.reads.percent + '</td>' +
 				'<td>' + user.stats.quizzes.percent + '</td>' +
+				'<td>' + user.stats.quizzes.scoreAvg + '</td>' +
 				'</tr>';
 		})
 		dataStudents.innerHTML = celda;
