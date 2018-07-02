@@ -166,19 +166,8 @@ detalles:
 
 #### 3) Diseño de la Interfaz de Usuario (prototipo de alta fidelidad)
 
-Lo siguiente es diseñar tu Interfaz de Usuario (UI por sus siglas en inglés).
-Para eso debes aprender a utilizar alguna herramienta de diseño visual.
-Nosotros te recomendamos [Figma](https://www.figma.com/) que  es una herramienta
-que funciona en el navegador y, además, puedes crear una cuenta gratis. Sin
-embargo, eres libre de utilizar otros editores gráficos como
-Illustrator, Photoshop, PowerPoint, Keynote, etc.
-
-El diseño debe representar tu _ideal_ de solución. Digamos que es lo que
-desearías implementar si tuvieras tiempo ilimitado para hackear.
-
-Tu diseño debe seguir los fundamentos de _visual design_, como:
-contraste, alineación, jerarquía, entre otros. Tip: revisa el contenido de UX
-de la unidad de visual design.
+Se brinda un prototipado fiable, esto se llegaria a cumplir con un tiempo viable para codear
+https://www.figma.com/proto/RfzFOq6mLCaLfM8UjKE2vdzr/DATA-DASHBOARD?scaling=scale-down&node-id=50%3A2
 
 ### Implementación de la Interfaz de Usuario (HTML/CSS/JS)
 
