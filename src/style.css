@@ -96,12 +96,13 @@ margin: 10px;
     width: 100vw;
     top:65px;
 }
+
 #contenido p{
     text-align: center;
     font-size: 50px;
     color: #000000;
     font-family: "Bitter";
-    width: 80;
+    width: 80vw;
 }
 .sectionFilas {
     border-width: 0;
