@@ -26,7 +26,7 @@ _ver_ y _usar_ la data de progreso del LMS. Para ello, proponemos crear un
 
 ## Introducción
 
-Según un [estudio de IBM](https://www-01.ibm.com/common/ssi/cgi-bin/ssialias?htmlfid=WRL12345USEN),
+Según un [estudio de IBM](https://drive.google.com/file/d/14FkAh8fnmdjQnnFp9uuomDXRxXQ-27w3/view?usp=sharing),
 el 90% de la data que existe hoy ha sido creada en los últimos dos años.
 Cada día generamos 2.5 trillones de bytes de datos, una cifra sin precedentes.
 
